@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/widgets/text/custom_error_text.dart';
-import '../../../../core/constants/strings.dart';
-import '../../../../core/widgets/appbar/valorant_app_bar.dart';
-import '../../../../core/widgets/image/custom_cached_network_image.dart';
-import '../../../../core/widgets/text/valorant_text.dart';
 
+import '../../../../core/constants/strings.dart';
 import '../../../../core/enums/page_status.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/network/network_manager.dart';
+import '../../../../core/widgets/appbar/valorant_app_bar.dart';
+import '../../../../core/widgets/image/custom_cached_network_image.dart';
+import '../../../../core/widgets/text/custom_error_text.dart';
+import '../../../../core/widgets/text/valorant_text.dart';
 import '../../data/data_sources/remote/agents_remote_data_source.dart';
 import '../../data/repositories/agent_repository_imp.dart';
 import '../../domain/entities/agent/agent_entity.dart';

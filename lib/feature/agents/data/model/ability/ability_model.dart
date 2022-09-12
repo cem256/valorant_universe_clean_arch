@@ -23,7 +23,7 @@ extension AbilityModelX on AbilityModel {
       slot: slot ?? "N/A",
       displayName: displayName ?? "N/A",
       description: description ?? "N/A",
-      displayIcon: displayIcon ?? "N/A",
+      displayIcon: displayIcon ?? "",
     );
   }
 }

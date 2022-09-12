@@ -21,7 +21,7 @@ extension RoleModelX on RoleModel {
     return RoleEntity(
       displayName: displayName ?? "N/A",
       description: description ?? "N/A",
-      displayIcon: displayIcon ?? "N/A",
+      displayIcon: displayIcon ?? "",
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../ability/ability_entity.dart';
@@ -13,7 +14,7 @@ class AgentEntity with _$AgentEntity {
     required String bustPortrait,
     required String fullPortrait,
     required String fullPortraitV2,
-    required List<String> backgroundGradientColors,
+    required List<Color> backgroundGradientColors,
     required RoleEntity role,
     required List<AbilityEntity> abilities,
   }) = _AgentEntity;

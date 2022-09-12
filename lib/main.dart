@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'core/constants/strings.dart';
 import 'core/router/app_router.gr.dart';
+import 'core/theme/app_theme.dart';
 import 'core/utility/observers/simple_bloc_observer.dart';
 
 void main() {
@@ -23,9 +24,9 @@ class ValorantUniverseRemastered extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       //theme
-      themeMode: ThemeMode.system,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
+      theme: AppTheme.instance.lightTheme,
+      darkTheme: AppTheme.instance.darkTheme,
 
       // routing
       routerDelegate: _appRouter.delegate(),

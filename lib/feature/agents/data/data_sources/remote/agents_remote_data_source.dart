@@ -10,7 +10,10 @@ class AgentsRemoteDataSource {
 
   Future<List<AgentModel>?> fetchAgents() async {
     try {
-      final response = await dio.get("/agents");
+      final response = await dio.get(
+        "/agents",
+        queryParameters: {"isPlayableCharacter": true},
+      );
       List? model = response.data["data"];
       if (model == null) {
         return null;

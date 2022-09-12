@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../core/extensions/string_extension.dart';
 import '../../../domain/entities/ability/ability_entity.dart';
 import '../../../domain/entities/agent/agent_entity.dart';
 import '../ability/ability_model.dart';
@@ -32,13 +34,21 @@ extension AgentModelX on AgentModel {
     return AgentEntity(
       displayName: displayName ?? "N/A",
       description: description ?? "N/A",
-      bustPortrait: bustPortrait ?? "N/A",
-      fullPortrait: fullPortrait ?? "N/A",
-      fullPortraitV2: fullPortraitV2 ?? "N/A",
-      backgroundGradientColors: backgroundGradientColors ?? [],
+      bustPortrait: bustPortrait ?? "",
+      fullPortrait: fullPortrait ?? "",
+      fullPortraitV2: fullPortraitV2 ?? "",
+      backgroundGradientColors: getGradientColors(),
       role: role?.toRoleEntity() ?? const RoleModel().toRoleEntity(),
       abilities: getAbilities(),
     );
+  }
+
+  List<Color> getGradientColors() {
+    List<Color> gradientColors = [];
+    backgroundGradientColors?.forEach((element) {
+      gradientColors.add(element.toColor());
+    });
+    return gradientColors;
   }
 
   List<AbilityEntity> getAbilities() {

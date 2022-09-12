@@ -8,7 +8,7 @@ import '../data_sources/remote/weapons_remote_data_source.dart';
 import '../model/weapon/weapon_model.dart';
 
 class WeaponRepositoryImp implements WeaponRepository {
-  WeaponRepositoryImp(this.weaponsRemoteDataSource);
+  WeaponRepositoryImp({required this.weaponsRemoteDataSource});
 
   final WeaponsRemoteDataSource weaponsRemoteDataSource;
 

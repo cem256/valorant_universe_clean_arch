@@ -14,7 +14,7 @@ part 'agents_state.dart';
 
 class AgentsBloc extends Bloc<AgentsEvent, AgentsState> {
   final AgentRepository agentRepository;
-  AgentsBloc({required this.agentRepository}) : super(const AgentsState(status: PageStatus.initial)) {
+  AgentsBloc({required this.agentRepository}) : super(const AgentsState()) {
     on<AgentsFetched>(_onAgentsFetched);
     on<AgentsSorted>(_onAgentsSorted);
   }

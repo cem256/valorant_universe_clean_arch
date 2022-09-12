@@ -16,41 +16,7 @@ class _AgentsGridView extends StatelessWidget {
       itemCount: agents.length,
       itemBuilder: (context, index) {
         final AgentEntity agent = agents[index];
-        return ClipRRect(
-          borderRadius: context.defaultBorderRadius,
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: agent.backgroundGradientColors,
-                  ),
-                ),
-              ),
-              Column(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Center(
-                      child: CustomCachedNetworkImage(
-                        imageUrl: agent.fullPortrait,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: ValorantText(
-                        text: agent.displayName,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        );
+        return _AgentsGridCard(agent: agent);
       },
     );
   }

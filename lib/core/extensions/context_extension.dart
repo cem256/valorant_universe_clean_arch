@@ -9,6 +9,9 @@ extension MediaQueryExtension on BuildContext {
   double get highValue => height * 0.06;
   double get veryHighValue => height * 0.1;
   double get veryHighValue2x => height * 0.2;
+  double get veryHighValue3x => height * 0.3;
+  double get veryHighValue4x => height * 0.4;
+  double get veryHighValue5x => height * 0.5;
 
   double dynamicWidth(double val) => width * val;
   double dynamicHeight(double val) => height * val;

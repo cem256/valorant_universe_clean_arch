@@ -25,8 +25,11 @@ class _WeaponsGridCard extends StatelessWidget {
               flex: 2,
               child: Padding(
                 padding: context.paddingAllDefault,
-                child: CustomCachedNetworkImage(
-                  imageUrl: weapon.displayIcon,
+                child: Hero(
+                  tag: weapon.displayName,
+                  child: CustomCachedNetworkImage(
+                    imageUrl: weapon.displayIcon,
+                  ),
                 ),
               ),
             ),

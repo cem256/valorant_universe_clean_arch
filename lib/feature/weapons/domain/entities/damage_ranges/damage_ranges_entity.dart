@@ -5,10 +5,10 @@ part 'damage_ranges_entity.freezed.dart';
 @freezed
 class DamageRangesEntity with _$DamageRangesEntity {
   const factory DamageRangesEntity({
-    required double rangeStartMeters,
-    required double rangeEndMeters,
-    required double headDamage,
-    required double bodyDamage,
-    required double legDamage,
+    required String rangeStartMeters,
+    required String rangeEndMeters,
+    required String headDamage,
+    required String bodyDamage,
+    required String legDamage,
   }) = _DamageRangesEntity;
 }

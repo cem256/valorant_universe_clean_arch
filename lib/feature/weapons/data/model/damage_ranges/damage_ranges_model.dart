@@ -21,11 +21,11 @@ class DamageRangesModel with _$DamageRangesModel {
 extension DamageRangesModelX on DamageRangesModel {
   DamageRangesEntity toDamageRangesEntity() {
     return DamageRangesEntity(
-      rangeStartMeters: rangeStartMeters ?? 0,
-      rangeEndMeters: rangeEndMeters ?? 0,
-      headDamage: headDamage ?? 0,
-      bodyDamage: bodyDamage ?? 0,
-      legDamage: legDamage ?? 0,
+      rangeStartMeters: rangeStartMeters?.toStringAsFixed(0) ?? "N/A",
+      rangeEndMeters: rangeEndMeters?.toStringAsFixed(0) ?? "N/A",
+      headDamage: headDamage?.toStringAsFixed(1) ?? "N/A",
+      bodyDamage: bodyDamage?.toStringAsFixed(1) ?? "N/A",
+      legDamage: legDamage?.toStringAsFixed(1) ?? "N/A",
     );
   }
 }

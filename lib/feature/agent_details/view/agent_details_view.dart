@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../agents/domain/entities/ability/ability_entity.dart';
 
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../core/widgets/text/valorant_text.dart';
+import '../../agents/domain/entities/ability/ability_entity.dart';
 import '../../agents/domain/entities/agent/agent_entity.dart';
 
 part '../widgets/agent_abilities.dart';

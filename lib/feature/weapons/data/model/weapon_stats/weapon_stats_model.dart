@@ -23,9 +23,9 @@ class WeaponStatsModel with _$WeaponStatsModel {
 extension WeaponStatsModelX on WeaponStatsModel {
   WeaponStatsEntity toWeaponStatsEntity() {
     return WeaponStatsEntity(
-      fireRate: fireRate ?? 0,
-      magazineSize: magazineSize ?? 0,
-      reloadTimeSeconds: reloadTimeSeconds ?? 0,
+      fireRate: fireRate?.toStringAsFixed(2) ?? "N/A",
+      magazineSize: magazineSize.toString(),
+      reloadTimeSeconds: reloadTimeSeconds?.toStringAsFixed(2) ?? "N/A",
       damageRanges: getDamageRanges(),
     );
   }

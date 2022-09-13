@@ -7,9 +7,9 @@ part 'weapon_stats_entity.freezed.dart';
 @freezed
 class WeaponStatsEntity with _$WeaponStatsEntity {
   const factory WeaponStatsEntity({
-    required double fireRate,
-    required int magazineSize,
-    required double reloadTimeSeconds,
+    required String fireRate,
+    required String magazineSize,
+    required String reloadTimeSeconds,
     required List<DamageRangesEntity> damageRanges,
   }) = _WeaponStatsEntity;
 }

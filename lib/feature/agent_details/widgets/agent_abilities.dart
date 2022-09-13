@@ -8,7 +8,7 @@ class _AgentAbilities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(thickness: 2),
+      separatorBuilder: (context, index) => const Divider(),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       padding: EdgeInsets.zero,

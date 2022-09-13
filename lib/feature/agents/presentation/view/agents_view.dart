@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/widgets/loading/loading_widget.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../../core/enums/page_status.dart';
@@ -48,7 +49,7 @@ class AgentsViewBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status == PageStatus.initial || state.status == PageStatus.loading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: LoadingWidget(),
           );
         } else if (state.status == PageStatus.success) {
           return Padding(

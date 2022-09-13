@@ -10,7 +10,7 @@ class _WeaponDetailCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: context.defaultBorderRadius,
-        color: Theme.of(context).disabledColor,
+        color: context.theme.disabledColor,
       ),
       child: Column(
         children: [

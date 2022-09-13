@@ -1,12 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'core/constants/strings.dart';
 import 'core/router/app_router.gr.dart';
-import 'core/theme/app_theme.dart';
+import 'core/theme/theme_manager.dart';
 import 'core/utility/observers/simple_bloc_observer.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
   Bloc.observer = SimpleBlocObserver();
   runApp(ValorantUniverseRemastered());
 }
@@ -25,8 +31,7 @@ class ValorantUniverseRemastered extends StatelessWidget {
 
       //theme
       themeMode: ThemeMode.dark,
-      theme: AppTheme.instance.lightTheme,
-      darkTheme: AppTheme.instance.darkTheme,
+      darkTheme: ThemeManager.instance.darkTheme,
 
       // routing
       routerDelegate: _appRouter.delegate(),

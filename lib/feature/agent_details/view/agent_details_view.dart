@@ -30,11 +30,13 @@ class AgentDetailsView extends StatelessWidget {
                 children: [
                   Text(
                     agent.description,
+                    style: context.textTheme.bodyText1,
                   ),
                   SizedBox(
                     height: context.mediumValue,
                   ),
                   const ValorantText(
+                    isTitle: true,
                     text: "Abilities",
                   ),
                   SizedBox(

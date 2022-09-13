@@ -40,9 +40,11 @@ class _StackedAgentImage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ValorantText(
+                    isTitle: true,
                     text: agent.displayName,
                   ),
                   ValorantText(
+                    isTitle: false,
                     text: agent.role.displayName,
                   ),
                 ],

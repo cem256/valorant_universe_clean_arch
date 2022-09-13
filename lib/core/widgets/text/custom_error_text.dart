@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../extensions/context_extension.dart';
+
 class CustomErrorText extends StatelessWidget {
   const CustomErrorText({super.key});
 
@@ -8,7 +10,7 @@ class CustomErrorText extends StatelessWidget {
     return Center(
       child: Text(
         "Something went wrong",
-        style: Theme.of(context).textTheme.headline6,
+        style: context.textTheme.titleMedium,
       ),
     );
   }

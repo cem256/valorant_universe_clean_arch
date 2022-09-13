@@ -34,6 +34,7 @@ class WeaponDetailsView extends StatelessWidget {
               height: context.mediumValue,
             ),
             const ValorantText(
+              isTitle: true,
               text: "Weapon Stats",
             ),
             SizedBox(
@@ -65,6 +66,7 @@ class WeaponDetailsView extends StatelessWidget {
                   Visibility(
                     visible: weapon.weaponStats.damageRanges.isNotEmpty,
                     child: const ValorantText(
+                      isTitle: true,
                       text: "Damage Ranges",
                     ),
                   ),

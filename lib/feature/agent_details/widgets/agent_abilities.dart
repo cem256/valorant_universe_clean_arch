@@ -39,7 +39,7 @@ class _AgentAbilities extends StatelessWidget {
                   ),
                   Text(
                     ability.description,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: context.theme.disabledColor),
                   ),
                 ],
               ),

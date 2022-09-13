@@ -16,7 +16,7 @@ class _WeaponsGridCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: context.defaultBorderRadius,
-          color: Theme.of(context).disabledColor,
+          color: context.theme.disabledColor,
         ),
         child: Column(
           children: [
@@ -36,6 +36,7 @@ class _WeaponsGridCard extends StatelessWidget {
             Expanded(
               child: Center(
                 child: ValorantText(
+                  isTitle: true,
                   text: weapon.displayName,
                 ),
               ),

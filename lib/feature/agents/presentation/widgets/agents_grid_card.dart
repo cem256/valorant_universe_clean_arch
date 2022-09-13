@@ -36,6 +36,7 @@ class _AgentsGridCard extends StatelessWidget {
             Expanded(
               child: Center(
                 child: ValorantText(
+                  isTitle: true,
                   text: agent.displayName,
                 ),
               ),

@@ -16,9 +16,11 @@ class _WeaponInfoTile extends StatelessWidget {
       children: [
         Text(
           leftString,
+          style: context.textTheme.bodyText1,
         ),
         Text(
           rightString,
+          style: context.textTheme.bodyText1,
         ),
       ],
     );

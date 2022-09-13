@@ -20,10 +20,11 @@ class _SortAgents extends StatelessWidget {
             padding: context.paddingHorizontalDefault,
             decoration: BoxDecoration(
               borderRadius: context.defaultBorderRadius,
-              color: index == selectedIndex ? Colors.red : Colors.black,
+              color: index == selectedIndex ? context.theme.focusColor : context.theme.disabledColor,
             ),
             child: Center(
               child: ValorantText(
+                isTitle: false,
                 text: Strings.roles[index],
               ),
             ),

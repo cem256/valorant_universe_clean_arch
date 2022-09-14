@@ -29,6 +29,7 @@ dependencies:
 
   #ui
   cached_network_image: ^3.2.2
+  salomon_bottom_bar: ^3.3.1
   lottie: ^1.4.2
 
   #app icons

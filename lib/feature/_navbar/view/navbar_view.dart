@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../../../core/extensions/context_extension.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../core/widgets/icons/custom_icons.dart';
 
@@ -15,18 +17,24 @@ class NavbarView extends StatelessWidget {
         WeaponsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
-        return BottomNavigationBar(
+        return SalomonBottomBar(
+          itemShape: RoundedRectangleBorder(
+            borderRadius: context.defaultBorderRadius,
+          ),
+          selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+          unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+          selectedColorOpacity: 0.4,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(CustomIcons.agent),
-              label: "Agents",
+          items: [
+            SalomonBottomBarItem(
+              title: const Text("Agents"),
+              icon: const Icon(CustomIcons.agent),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(CustomIcons.weapon),
-              label: "Weapons",
-            )
+            SalomonBottomBarItem(
+              title: const Text("Weapons"),
+              icon: const Icon(CustomIcons.weapon),
+            ),
           ],
         );
       },

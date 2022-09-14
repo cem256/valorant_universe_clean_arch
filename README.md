@@ -25,9 +25,13 @@ A simple app to demonstrate Clean Architecture
   </tr>
 </table>
 
-## What is used in this project?
+## Built With
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
+- [Valorant-Api](https://valorant-api.com/)
+
+
+## Packages
 - [Bloc](https://pub.dev/packages/flutter_bloc) State management
 - [Freezed](https://pub.dev/packages/freezed) Code generation for Dart data classes
 - [Dartz](https://pub.dev/packages/dartz) Functional programming

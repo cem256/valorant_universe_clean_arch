@@ -8,7 +8,7 @@ class AgentsRemoteDataSource {
 
   AgentsRemoteDataSource({required this.dio});
 
-  Future<List<AgentModel>?> fetchAgents() async {
+  Future<List<AgentModel>> fetchAgents() async {
     try {
       final response = await dio.get(
         "/agents",
@@ -16,12 +16,12 @@ class AgentsRemoteDataSource {
       );
       List? model = response.data["data"];
       if (model == null) {
-        return null;
+        throw NullResponseException();
       } else {
         return model.map((e) => AgentModel.fromJson(e)).toList();
       }
-    } on DioError catch (_) {
-      throw DioException();
+    } on DioError catch (e) {
+      throw DioException(e.message);
     } catch (_) {
       throw UnknownException();
     }

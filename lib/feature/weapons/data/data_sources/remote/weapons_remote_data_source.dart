@@ -8,17 +8,17 @@ class WeaponsRemoteDataSource {
 
   WeaponsRemoteDataSource({required this.dio});
 
-  Future<List<WeaponModel>?> fetchWeapons() async {
+  Future<List<WeaponModel>> fetchWeapons() async {
     try {
       final response = await dio.get("/weapons");
       List? model = response.data["data"];
       if (model == null) {
-        return null;
+        throw NullResponseException();
       } else {
         return model.map((e) => WeaponModel.fromJson(e)).toList();
       }
-    } on DioError catch (_) {
-      throw DioException();
+    } on DioError catch (e) {
+      throw DioException(e.message);
     } catch (_) {
       throw UnknownException();
     }

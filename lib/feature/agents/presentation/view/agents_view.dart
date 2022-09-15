@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../../core/enums/page_status.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/network/network_info.dart';
 import '../../../../core/network/network_manager.dart';
 import '../../../../core/router/app_router.gr.dart';
 import '../../../../core/widgets/appbar/valorant_app_bar.dart';
@@ -32,6 +34,7 @@ class AgentsView extends StatelessWidget {
         create: (context) => AgentsBloc(
           agentRepository: AgentRepositoryImp(
             agentsRemoteDataSource: AgentsRemoteDataSource(dio: NetworkManager.instance.dio),
+            networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
           ),
         )..add(const AgentsFetched()),
         child: const AgentsViewBody(),
@@ -70,7 +73,7 @@ class AgentsViewBody extends StatelessWidget {
             ),
           );
         } else {
-          return const CustomErrorText();
+          return CustomErrorText(failure: state.failure!);
         }
       },
     );

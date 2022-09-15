@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/constants/strings.dart';
 import '../../../../core/enums/page_status.dart';
+import '../../../../core/failure/api_failure.dart';
 import '../../domain/entities/agent/agent_entity.dart';
 import '../../domain/repositories/agent_repository.dart';
 
@@ -24,7 +25,7 @@ class AgentsBloc extends Bloc<AgentsEvent, AgentsState> {
     final result = await agentRepository.fetchAllAgents();
 
     result.fold(
-      (failure) => emit(state.copyWith(status: PageStatus.failure)),
+      (failure) => emit(state.copyWith(status: PageStatus.failure, failure: failure)),
       (agents) => emit(state.copyWith(agents: agents, allAgents: agents, status: PageStatus.success)),
     );
   }

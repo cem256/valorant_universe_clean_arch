@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/enums/page_status.dart';
+import '../../../../core/failure/api_failure.dart';
 import '../../domain/entities/weapon/weapon_entity.dart';
 import '../../domain/repositories/weapon_repository.dart';
 
@@ -21,7 +22,7 @@ class WeaponsBloc extends Bloc<WeaponsEvent, WeaponsState> {
     final result = await weaponRepository.fetchAllWeapons();
 
     result.fold(
-      (failure) => emit(state.copyWith(status: PageStatus.failure)),
+      (failure) => emit(state.copyWith(status: PageStatus.failure, failure: failure)),
       (weapons) => emit(state.copyWith(weapons: weapons, status: PageStatus.success)),
     );
   }

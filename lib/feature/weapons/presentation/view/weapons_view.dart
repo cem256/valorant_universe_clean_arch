@@ -1,15 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import '../../../../core/widgets/text/custom_error_text.dart';
 
 import '../../../../core/enums/page_status.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/network/network_info.dart';
 import '../../../../core/network/network_manager.dart';
 import '../../../../core/router/app_router.gr.dart';
 import '../../../../core/widgets/appbar/valorant_app_bar.dart';
 import '../../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../../core/widgets/loading/loading_widget.dart';
-import '../../../../core/widgets/text/custom_error_text.dart';
 import '../../../../core/widgets/text/valorant_text.dart';
 import '../../data/data_sources/remote/weapons_remote_data_source.dart';
 import '../../data/repositories/weapon_repository_imp.dart';
@@ -32,6 +34,7 @@ class WeaponsView extends StatelessWidget {
         create: (context) => WeaponsBloc(
           weaponRepository: WeaponRepositoryImp(
             weaponsRemoteDataSource: WeaponsRemoteDataSource(dio: NetworkManager.instance.dio),
+            networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
           ),
         )..add(const WeaponsFetched()),
         child: const WeaponsViewBody(),
@@ -60,7 +63,7 @@ class WeaponsViewBody extends StatelessWidget {
             ],
           );
         } else {
-          return const CustomErrorText();
+          return CustomErrorText(failure: state.failure!);
         }
       },
     );

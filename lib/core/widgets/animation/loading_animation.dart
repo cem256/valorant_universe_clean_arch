@@ -3,8 +3,8 @@ import 'package:lottie/lottie.dart';
 
 import '../../extensions/context_extension.dart';
 
-class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({super.key});
+class LoadingAnimation extends StatelessWidget {
+  const LoadingAnimation({super.key});
 
   @override
   Widget build(BuildContext context) {

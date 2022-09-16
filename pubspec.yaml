@@ -76,7 +76,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/animations/loading_animation.json
+    - assets/animations/
 
   fonts:
     - family: Valorant

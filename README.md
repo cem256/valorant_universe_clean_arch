@@ -32,12 +32,30 @@ A simple app to demonstrate Clean Architecture
 
 
 ## Packages
-- [Bloc](https://pub.dev/packages/flutter_bloc) State management
-- [Freezed](https://pub.dev/packages/freezed) Code generation for Dart data classes
-- [Dartz](https://pub.dev/packages/dartz) Functional programming
-- [Dio](https://pub.dev/packages/dio) Http Client
-- [AutoRoute](https://pub.dev/packages/auto_route) Route setup
-- [Lottie](https://pub.dev/packages/lottie) Cool animations
+- State Management
+  - [Bloc](https://pub.dev/packages/flutter_bloc)
+- Dart Data Class Generation
+  - [Freezed](https://pub.dev/packages/freezed)
+  - [JsonSerializable](https://pub.dev/packages/json_serializable)
+- Functional Programming
+  - [Dartz](https://pub.dev/packages/dartz)
+- Network
+  - [Dio](https://pub.dev/packages/dio)
+  - [PrettyDioLogger](https://pub.dev/packages/pretty_dio_logger)
+  - [InternetConnectionChecker](https://pub.dev/packages/internet_connection_checker)
+- Navigation
+  - [AutoRoute](https://pub.dev/packages/auto_route)
+- UI
+  - [Lottie](https://pub.dev/packages/lottie)
+  - [SalomonBottomBar](https://pub.dev/packages/salomon_bottom_bar)
+  - [CachedNetworkImage](https://pub.dev/packages/cached_network_image)
+- Testing
+  - [Mocktail](https://pub.dev/packages/mocktail)
+  - [BlocTest](https://pub.dev/packages/bloc_test)
+
+
+
+
 
 ### Run this project
 

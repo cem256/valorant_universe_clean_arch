@@ -42,6 +42,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter  
   mocktail: ^0.3.0
+  bloc_test: ^9.1.0
+
   
   #code gen
   freezed: ^2.1.0+1

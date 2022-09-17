@@ -20,7 +20,6 @@ class AbilityModel with _$AbilityModel {
 extension AbilityModelX on AbilityModel {
   AbilityEntity toAbilityEntity() {
     return AbilityEntity(
-      slot: slot ?? "N/A",
       displayName: displayName ?? "N/A",
       description: description ?? "N/A",
       displayIcon: displayIcon ?? "",

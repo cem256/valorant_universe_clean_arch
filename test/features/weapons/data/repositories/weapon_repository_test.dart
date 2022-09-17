@@ -5,7 +5,6 @@ import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/data_sources/remote/weapons_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/weapon_model.dart';
-import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon_stats/weapon_stats_model.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/repositories/weapon_repository_imp.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/repositories/weapon_repository.dart';
@@ -14,10 +13,13 @@ class MockWeaponsRemoteDataSource extends Mock implements WeaponsRemoteDataSourc
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
+class MockWeaponModel extends Mock implements WeaponModel {}
+
 void main() {
   late MockWeaponsRemoteDataSource mockWeaponsRemoteDataSource;
   late MockNetworkInfo mockNetworkInfo;
   late WeaponRepository weaponRepository;
+  late List<MockWeaponModel> mockWeaponModel;
 
   setUp(() {
     mockWeaponsRemoteDataSource = MockWeaponsRemoteDataSource();
@@ -26,6 +28,7 @@ void main() {
       weaponsRemoteDataSource: mockWeaponsRemoteDataSource,
       networkInfo: mockNetworkInfo,
     );
+    mockWeaponModel = List.generate(10, (index) => MockWeaponModel());
   });
   group("Checks the device connection", () {
     test("Device is online", () {
@@ -36,24 +39,10 @@ void main() {
     });
   });
 
-  final tWeaponModels = [
-    const WeaponModel(
-      displayName: "Test DisplayName",
-      category: "Test Category",
-      displayIcon: "Test DisplayIcon",
-      weaponStats: WeaponStatsModel(
-        fireRate: 10,
-        magazineSize: 10,
-        reloadTimeSeconds: 10,
-        damageRanges: [],
-      ),
-    ),
-  ];
-
   group("fetch weapons", () {
     test("should return list of weapon entities when there is no exception", () async {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => mockWeaponsRemoteDataSource.fetchWeapons()).thenAnswer((_) async => tWeaponModels);
+      when(() => mockWeaponsRemoteDataSource.fetchWeapons()).thenAnswer((_) async => mockWeaponModel);
       final result = await weaponRepository.fetchAllWeapons();
 
       verify(() => mockWeaponsRemoteDataSource.fetchWeapons());

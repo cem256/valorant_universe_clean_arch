@@ -1,0 +1,42 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/repositories/weapon_repository.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/use_cases/fetch_all_weapons_use_case.dart';
+
+class MockWeaponRepository extends Mock implements WeaponRepository {}
+
+class MockWeaponEntity extends Mock implements WeaponEntity {}
+
+void main() {
+  late MockWeaponRepository mockWeaponRepository;
+  late FetchAllWeaponsUseCase fetchAllWeaponsUseCase;
+  late List<MockWeaponEntity> mockWeaponEntity;
+
+  setUp(() {
+    mockWeaponRepository = MockWeaponRepository();
+    fetchAllWeaponsUseCase = FetchAllWeaponsUseCase(weaponRepository: mockWeaponRepository);
+    mockWeaponEntity = List.generate(10, (index) => MockWeaponEntity());
+  });
+
+  group("FetchAllWeaponsUseCaseTest", () {
+    test("Should return list of weapon entities when there is no exception", () async {
+      when(() => mockWeaponRepository.fetchAllWeapons()).thenAnswer((_) async => Right(mockWeaponEntity));
+      final result = await fetchAllWeaponsUseCase();
+
+      verify(() => fetchAllWeaponsUseCase());
+      expect(result, isA<Right<ApiFailure, List<WeaponEntity>>>());
+    });
+
+    test("Should return ApiFailure when there is an exception", () async {
+      when(() => mockWeaponRepository.fetchAllWeapons())
+          .thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
+      final result = await fetchAllWeaponsUseCase();
+
+      verify(() => fetchAllWeaponsUseCase());
+      expect(result, isA<Left<ApiFailure, List<WeaponEntity>>>());
+    });
+  });
+}

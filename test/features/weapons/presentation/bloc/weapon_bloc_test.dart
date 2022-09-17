@@ -4,35 +4,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:valorant_universe_remastered/core/enums/page_status.dart';
 import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
-import 'package:valorant_universe_remastered/feature/weapons/data/repositories/weapon_repository_imp.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
-import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon_stats/weapon_stats_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/use_cases/fetch_all_weapons_use_case.dart';
 import 'package:valorant_universe_remastered/feature/weapons/presentation/bloc/weapons_bloc.dart';
 
-class MockWeaponRepositoryImp extends Mock implements WeaponRepositoryImp {}
+class MockFetchAllWeaponsUseCase extends Mock implements FetchAllWeaponsUseCase {}
+
+class MockWeaponEntity extends Mock implements WeaponEntity {}
 
 void main() {
   late WeaponsBloc weaponsBloc;
-  late MockWeaponRepositoryImp mockWeaponRepository;
-  late List<WeaponEntity> tWeaponEntities;
+  late MockFetchAllWeaponsUseCase fetchAllWeaponsUseCase;
+  late List<MockWeaponEntity> mockWeaponEntities;
 
   setUp(() {
-    mockWeaponRepository = MockWeaponRepositoryImp();
-    weaponsBloc = WeaponsBloc(weaponRepository: mockWeaponRepository);
-
-    tWeaponEntities = [
-      const WeaponEntity(
-        displayName: "Test DisplayName",
-        category: "Test Category",
-        displayIcon: "Test DisplayIcon",
-        weaponStats: WeaponStatsEntity(
-          fireRate: "10",
-          magazineSize: "10",
-          reloadTimeSeconds: "10",
-          damageRanges: [],
-        ),
-      ),
-    ];
+    fetchAllWeaponsUseCase = MockFetchAllWeaponsUseCase();
+    weaponsBloc = WeaponsBloc(fetchAllWeaponsUseCase: fetchAllWeaponsUseCase);
+    mockWeaponEntities = List.generate(10, (index) => MockWeaponEntity());
   });
 
   group("Weapons Bloc Tests", () {
@@ -50,7 +38,7 @@ void main() {
     blocTest(
       "Fetch all weapons error case test",
       setUp: () {
-        when(() => mockWeaponRepository.fetchAllWeapons()).thenAnswer(
+        when(() => fetchAllWeaponsUseCase()).thenAnswer(
           (_) async => const Left(ApiFailure.unknownFailure()),
         );
       },
@@ -68,8 +56,8 @@ void main() {
     blocTest(
       "Fetch all weapons success case test",
       setUp: () {
-        when(() => mockWeaponRepository.fetchAllWeapons()).thenAnswer(
-          (_) async => Right(tWeaponEntities),
+        when(() => fetchAllWeaponsUseCase()).thenAnswer(
+          (_) async => Right(mockWeaponEntities),
         );
       },
       build: () => weaponsBloc,
@@ -77,7 +65,7 @@ void main() {
       expect: () => [
         const WeaponsState(status: PageStatus.loading),
         WeaponsState(
-          weapons: tWeaponEntities,
+          weapons: mockWeaponEntities,
           status: PageStatus.success,
         ),
       ],

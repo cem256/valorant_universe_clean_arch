@@ -18,6 +18,7 @@ import '../../../../core/widgets/text/valorant_text.dart';
 import '../../data/data_sources/remote/agents_remote_data_source.dart';
 import '../../data/repositories/agent_repository_imp.dart';
 import '../../domain/entities/agent/agent_entity.dart';
+import '../../domain/use_cases/fetch_all_agents_use_case.dart';
 import '../bloc/agents_bloc.dart';
 
 part '../widgets/agents_grid_card.dart';
@@ -33,9 +34,11 @@ class AgentsView extends StatelessWidget {
       appBar: const ValorantAppBar(title: "Agents"),
       body: BlocProvider(
         create: (context) => AgentsBloc(
-          agentRepository: AgentRepositoryImp(
-            agentsRemoteDataSource: AgentsRemoteDataSource(dio: NetworkManager.instance.dio),
-            networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
+          fetchAllAgentsUseCase: FetchAllAgentsUseCase(
+            agentRepository: AgentRepositoryImp(
+              agentsRemoteDataSource: AgentsRemoteDataSource(dio: NetworkManager.instance.dio),
+              networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
+            ),
           ),
         )..add(const AgentsFetched()),
         child: const AgentsViewBody(),

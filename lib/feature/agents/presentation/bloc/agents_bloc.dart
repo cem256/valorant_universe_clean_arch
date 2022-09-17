@@ -7,22 +7,22 @@ import '../../../../core/constants/strings.dart';
 import '../../../../core/enums/page_status.dart';
 import '../../../../core/failure/api_failure.dart';
 import '../../domain/entities/agent/agent_entity.dart';
-import '../../domain/repositories/agent_repository.dart';
+import '../../domain/use_cases/fetch_all_agents_use_case.dart';
 
 part 'agents_bloc.freezed.dart';
 part 'agents_event.dart';
 part 'agents_state.dart';
 
 class AgentsBloc extends Bloc<AgentsEvent, AgentsState> {
-  final AgentRepository agentRepository;
-  AgentsBloc({required this.agentRepository}) : super(const AgentsState()) {
+  final FetchAllAgentsUseCase fetchAllAgentsUseCase;
+  AgentsBloc({required this.fetchAllAgentsUseCase}) : super(const AgentsState()) {
     on<AgentsFetched>(_onAgentsFetched);
     on<AgentsSorted>(_onAgentsSorted);
   }
 
   Future<void> _onAgentsFetched(AgentsFetched event, Emitter<AgentsState> emit) async {
     emit(state.copyWith(status: PageStatus.loading));
-    final result = await agentRepository.fetchAllAgents();
+    final result = await fetchAllAgentsUseCase();
 
     result.fold(
       (failure) => emit(state.copyWith(status: PageStatus.failure, failure: failure)),

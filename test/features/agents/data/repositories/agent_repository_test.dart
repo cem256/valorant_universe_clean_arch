@@ -4,9 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/data_sources/remote/agents_remote_data_source.dart';
-import 'package:valorant_universe_remastered/feature/agents/data/model/ability/ability_model.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/model/agent/agent_model.dart';
-import 'package:valorant_universe_remastered/feature/agents/data/model/role/role_model.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/repositories/agent_repository_imp.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
@@ -15,10 +13,13 @@ class MockAgentsRemoteDataSource extends Mock implements AgentsRemoteDataSource 
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
+class MockAgentModel extends Mock implements AgentModel {}
+
 void main() {
   late MockAgentsRemoteDataSource mockAgentsRemoteDataSource;
   late MockNetworkInfo mockNetworkInfo;
   late AgentRepository agentRepository;
+  late List<MockAgentModel> mockAgentModel;
 
   setUp(() {
     mockAgentsRemoteDataSource = MockAgentsRemoteDataSource();
@@ -27,6 +28,7 @@ void main() {
       agentsRemoteDataSource: mockAgentsRemoteDataSource,
       networkInfo: mockNetworkInfo,
     );
+    mockAgentModel = List.generate(10, (index) => MockAgentModel());
   });
   group("Checks the device connection", () {
     test("Device is online", () {
@@ -37,33 +39,10 @@ void main() {
     });
   });
 
-  final tAgentModels = [
-    const AgentModel(
-      displayName: "Test DisplayName",
-      description: "Test Description",
-      bustPortrait: "Test BustPortrait",
-      fullPortrait: "Test FullPortrait",
-      fullPortraitV2: "Test FullPortraitV2",
-      backgroundGradientColors: [],
-      role: RoleModel(
-        description: "Test Description",
-        displayIcon: "Test DisplayIcon",
-        displayName: "Test Dipslay Name",
-      ),
-      abilities: [
-        AbilityModel(
-          description: "Test Description",
-          displayIcon: "Test DisplayIcon",
-          displayName: "Test DisplayName",
-        )
-      ],
-    ),
-  ];
-
   group("fetch agents", () {
     test("should return list of agent entities when there is no exception", () async {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => mockAgentsRemoteDataSource.fetchAgents()).thenAnswer((_) async => tAgentModels);
+      when(() => mockAgentsRemoteDataSource.fetchAgents()).thenAnswer((_) async => mockAgentModel);
       final result = await agentRepository.fetchAllAgents();
 
       verify(() => mockAgentsRemoteDataSource.fetchAgents());

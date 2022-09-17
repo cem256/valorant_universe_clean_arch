@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import '../../domain/use_cases/fetch_all_weapons_use_case.dart';
 
 import '../../../../core/enums/page_status.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -33,9 +34,11 @@ class WeaponsView extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => WeaponsBloc(
-          weaponRepository: WeaponRepositoryImp(
-            weaponsRemoteDataSource: WeaponsRemoteDataSource(dio: NetworkManager.instance.dio),
-            networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
+          fetchAllWeaponsUseCase: FetchAllWeaponsUseCase(
+            weaponRepository: WeaponRepositoryImp(
+              weaponsRemoteDataSource: WeaponsRemoteDataSource(dio: NetworkManager.instance.dio),
+              networkInfo: NetworkInfoImp(connectionChecker: InternetConnectionChecker()),
+            ),
           ),
         )..add(const WeaponsFetched()),
         child: const WeaponsViewBody(),

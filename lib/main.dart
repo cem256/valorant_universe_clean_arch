@@ -8,19 +8,21 @@ import 'core/locale/locale_manager.dart';
 import 'core/router/app_router.gr.dart';
 import 'core/theme/theme_manager.dart';
 import 'core/utility/observers/simple_bloc_observer.dart';
+import 'locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  initServices();
   await EasyLocalization.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   Bloc.observer = SimpleBlocObserver();
   runApp(
     EasyLocalization(
-      supportedLocales: LocaleManager.instance.supportedLocales,
-      path: LocaleManager.instance.path,
-      fallbackLocale: LocaleManager.instance.en,
+      supportedLocales: getIt<LocaleManager>().supportedLocales,
+      path: getIt<LocaleManager>().path,
+      fallbackLocale: getIt<LocaleManager>().en,
       child: ValorantUniverseRemastered(),
     ),
   );
@@ -44,7 +46,7 @@ class ValorantUniverseRemastered extends StatelessWidget {
 
       //theme
       themeMode: ThemeMode.dark,
-      darkTheme: ThemeManager.instance.darkTheme,
+      darkTheme: getIt<ThemeManager>().darkTheme,
 
       // routing
       routerDelegate: _appRouter.delegate(),

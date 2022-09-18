@@ -32,7 +32,7 @@ class AgentsBloc extends Bloc<AgentsEvent, AgentsState> {
   }
 
   void _onAgentsSorted(AgentsSorted event, Emitter<AgentsState> emit) {
-    final List<AgentEntity> agents = sortAgentUseCase.call(allAgents: state.allAgents, index: event.index);
+    final List<AgentEntity> agents = sortAgentUseCase(allAgents: state.allAgents, index: event.index);
 
     emit(state.copyWith(agents: agents, selectedIndex: event.index));
   }

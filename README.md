@@ -47,6 +47,8 @@ A simple app to demonstrate Clean Architecture
   - [AutoRoute](https://pub.dev/packages/auto_route)
 - Localization
   - [EasyLocalization](https://pub.dev/packages/easy_localization)
+- Dependency Injection
+  -[GetIt](https://pub.dev/packages/get_it)
 - UI
   - [Lottie](https://pub.dev/packages/lottie)
   - [SalomonBottomBar](https://pub.dev/packages/salomon_bottom_bar)
@@ -54,8 +56,6 @@ A simple app to demonstrate Clean Architecture
 - Testing
   - [Mocktail](https://pub.dev/packages/mocktail)
   - [BlocTest](https://pub.dev/packages/bloc_test)
-
-
 
 
 

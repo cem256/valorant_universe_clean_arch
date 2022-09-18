@@ -48,7 +48,7 @@ A simple app to demonstrate Clean Architecture
 - Localization
   - [EasyLocalization](https://pub.dev/packages/easy_localization)
 - Dependency Injection
-  -[GetIt](https://pub.dev/packages/get_it)
+  - [GetIt](https://pub.dev/packages/get_it)
 - UI
   - [Lottie](https://pub.dev/packages/lottie)
   - [SalomonBottomBar](https://pub.dev/packages/salomon_bottom_bar)

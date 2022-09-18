@@ -15,11 +15,14 @@ class MockNetworkInfo extends Mock implements NetworkInfo {}
 
 class MockAgentModel extends Mock implements AgentModel {}
 
+class MockAgentEntity extends Mock implements AgentEntity {}
+
 void main() {
   late MockAgentsRemoteDataSource mockAgentsRemoteDataSource;
   late MockNetworkInfo mockNetworkInfo;
   late AgentRepository agentRepository;
   late List<MockAgentModel> mockAgentModel;
+  late List<MockAgentEntity> mockAgentEntity;
 
   setUp(() {
     mockAgentsRemoteDataSource = MockAgentsRemoteDataSource();
@@ -29,6 +32,7 @@ void main() {
       networkInfo: mockNetworkInfo,
     );
     mockAgentModel = List.generate(10, (index) => MockAgentModel());
+    mockAgentEntity = List.generate(10, (index) => MockAgentEntity());
   });
   group("Checks the device connection", () {
     test("Device is online", () {
@@ -57,5 +61,11 @@ void main() {
 
     verify(() => mockAgentsRemoteDataSource.fetchAgents());
     expect(result, isA<Left<ApiFailure, List<AgentEntity>>>());
+  });
+
+  test("should return list of agent enitities length of 10 when index equals to 0", () {
+    final result = agentRepository.sortAgents(allAgents: mockAgentEntity, index: 0);
+
+    expect(result.length, 10);
   });
 }

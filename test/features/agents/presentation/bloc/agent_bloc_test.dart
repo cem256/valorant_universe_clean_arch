@@ -6,20 +6,28 @@ import 'package:valorant_universe_remastered/core/enums/page_status.dart';
 import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/use_cases/fetch_all_agents_use_case.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/use_cases/sort_agents_use_case.dart';
 import 'package:valorant_universe_remastered/feature/agents/presentation/bloc/agents_bloc.dart';
 
 class MockFetchAllAgentsUseCase extends Mock implements FetchAllAgentsUseCase {}
+
+class MockSortAgentsUseCase extends Mock implements SortAgentUseCase {}
 
 class MockAgentEntity extends Mock implements AgentEntity {}
 
 void main() {
   late AgentsBloc agentsBloc;
   late MockFetchAllAgentsUseCase mockFetchAllAgentsUseCase;
+  late MockSortAgentsUseCase mockSortAgentsUseCase;
   late List<MockAgentEntity> mockAgentEntities;
 
   setUp(() {
     mockFetchAllAgentsUseCase = MockFetchAllAgentsUseCase();
-    agentsBloc = AgentsBloc(fetchAllAgentsUseCase: mockFetchAllAgentsUseCase);
+    mockSortAgentsUseCase = MockSortAgentsUseCase();
+    agentsBloc = AgentsBloc(
+      fetchAllAgentsUseCase: mockFetchAllAgentsUseCase,
+      sortAgentUseCase: mockSortAgentsUseCase,
+    );
     mockAgentEntities = List.generate(10, (index) => MockAgentEntity());
   });
 

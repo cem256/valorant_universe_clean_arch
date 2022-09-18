@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/locale/locale_keys.g.dart';
 import '../../../core/widgets/appbar/valorant_app_bar.dart';
 import '../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../core/widgets/text/valorant_text.dart';
@@ -33,9 +35,9 @@ class WeaponDetailsView extends StatelessWidget {
             SizedBox(
               height: context.mediumValue,
             ),
-            const ValorantText(
+            ValorantText(
               isTitle: true,
-              text: "Weapon Stats",
+              text: LocaleKeys.weapon_detail_weapon_stats.tr(),
             ),
             SizedBox(
               height: context.mediumValue,
@@ -46,18 +48,20 @@ class WeaponDetailsView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _WeaponInfoTile(
-                    leftString: "Magazine Size",
+                    leftString: LocaleKeys.weapon_detail_magazine_size.tr(),
                     rightString: weapon.weaponStats.magazineSize,
                   ),
                   const Divider(),
                   _WeaponInfoTile(
-                    leftString: "Reload Time",
-                    rightString: "${weapon.weaponStats.reloadTimeSeconds} sec",
+                    leftString: LocaleKeys.weapon_detail_reload_time.tr(),
+                    rightString: LocaleKeys.weapon_detail_reload_time_seconds
+                        .tr(namedArgs: {"value": weapon.weaponStats.reloadTimeSeconds}),
                   ),
                   const Divider(),
                   _WeaponInfoTile(
-                    leftString: "Fire Rate",
-                    rightString: "${weapon.weaponStats.fireRate} / sec",
+                    leftString: LocaleKeys.weapon_detail_fire_rate.tr(),
+                    rightString: LocaleKeys.weapon_detail_fire_rate_seconds
+                        .tr(namedArgs: {"value": weapon.weaponStats.fireRate}),
                   ),
                   const Divider(),
                   SizedBox(
@@ -65,9 +69,9 @@ class WeaponDetailsView extends StatelessWidget {
                   ),
                   Visibility(
                     visible: weapon.weaponStats.damageRanges.isNotEmpty,
-                    child: const ValorantText(
+                    child: ValorantText(
                       isTitle: true,
-                      text: "Damage Ranges",
+                      text: LocaleKeys.weapon_detail_damage_ranges.tr(),
                     ),
                   ),
                   SizedBox(

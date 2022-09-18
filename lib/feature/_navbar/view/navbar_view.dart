@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/locale/locale_keys.g.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../core/widgets/icons/custom_icons.dart';
 
@@ -28,11 +30,11 @@ class NavbarView extends StatelessWidget {
           onTap: tabsRouter.setActiveIndex,
           items: [
             SalomonBottomBarItem(
-              title: const Text("Agents"),
+              title: Text(LocaleKeys.common_agents.tr()),
               icon: const Icon(CustomIcons.agent),
             ),
             SalomonBottomBarItem(
-              title: const Text("Weapons"),
+              title: Text(LocaleKeys.common_weapons.tr()),
               icon: const Icon(CustomIcons.weapon),
             ),
           ],

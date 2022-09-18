@@ -21,6 +21,9 @@ dependencies:
   #routing
   auto_route: ^5.0.1
 
+  #localization
+  easy_localization: ^3.0.1
+
   #data class generation
   json_annotation: ^4.6.0
   freezed_annotation: ^2.1.0
@@ -80,6 +83,7 @@ flutter:
 
   assets:
     - assets/animations/
+    - assets/translations/
 
   fonts:
     - family: Valorant

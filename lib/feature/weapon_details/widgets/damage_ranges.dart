@@ -18,23 +18,25 @@ class _DamageRanges extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _WeaponInfoTile(
-              leftString:
-                  "${weaponStats.damageRanges[index].rangeStartMeters} - ${weaponStats.damageRanges[index].rangeEndMeters} meters",
+              leftString: LocaleKeys.weapon_detail_damage_ranges_meters.tr(namedArgs: {
+                "start": weaponStats.damageRanges[index].rangeStartMeters,
+                "end": weaponStats.damageRanges[index].rangeEndMeters
+              }),
               rightString: "",
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: "Head Damage",
+              leftString: LocaleKeys.weapon_detail_head_damage.tr(),
               rightString: weaponStats.damageRanges[index].headDamage,
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: "Body Damage",
+              leftString: LocaleKeys.weapon_detail_body_damage.tr(),
               rightString: weaponStats.damageRanges[index].bodyDamage,
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: "Leg Damage",
+              leftString: LocaleKeys.weapon_detail_leg_damage.tr(),
               rightString: weaponStats.damageRanges[index].legDamage,
             ),
             const Divider(),

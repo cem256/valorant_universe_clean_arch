@@ -45,6 +45,8 @@ A simple app to demonstrate Clean Architecture
   - [InternetConnectionChecker](https://pub.dev/packages/internet_connection_checker)
 - Navigation
   - [AutoRoute](https://pub.dev/packages/auto_route)
+- Localization
+  - [EasyLocalization](https://pub.dev/packages/easy_localization)
 - UI
   - [Lottie](https://pub.dev/packages/lottie)
   - [SalomonBottomBar](https://pub.dev/packages/salomon_bottom_bar)

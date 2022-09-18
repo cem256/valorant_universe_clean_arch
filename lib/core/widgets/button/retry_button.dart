@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../extensions/context_extension.dart';
+import '../../locale/locale_keys.g.dart';
 
 class RetryButton extends StatelessWidget {
   const RetryButton({super.key, required this.onPressed});
@@ -24,7 +26,7 @@ class RetryButton extends StatelessWidget {
           SizedBox(
             width: context.lowValue,
           ),
-          const Text("Retry"),
+          Text(LocaleKeys.retry.tr()),
         ],
       ),
     );

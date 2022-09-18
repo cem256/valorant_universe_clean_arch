@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/locale/locale_keys.g.dart';
 import '../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../core/widgets/text/valorant_text.dart';
 import '../../agents/domain/entities/ability/ability_entity.dart';
@@ -35,9 +37,9 @@ class AgentDetailsView extends StatelessWidget {
                   SizedBox(
                     height: context.mediumValue,
                   ),
-                  const ValorantText(
+                  ValorantText(
                     isTitle: true,
-                    text: "Abilities",
+                    text: LocaleKeys.abilities.tr(),
                   ),
                   SizedBox(
                     height: context.mediumValue,

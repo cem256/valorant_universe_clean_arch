@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../constants/assets.dart';
 import '../../extensions/context_extension.dart';
 
 class LoadingAnimation extends StatelessWidget {
@@ -10,7 +11,7 @@ class LoadingAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: context.veryHighValue3x,
-      child: LottieBuilder.asset("assets/animations/loading_animation.json"),
+      child: LottieBuilder.asset(Assets.loadingAnimationPath),
     );
   }
 }

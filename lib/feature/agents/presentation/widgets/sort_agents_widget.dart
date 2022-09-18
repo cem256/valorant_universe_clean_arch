@@ -7,12 +7,13 @@ class _SortAgents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> roles = LocaleKeys.roles.tr().split(":");
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       separatorBuilder: (context, index) => SizedBox(
         width: context.mediumValue,
       ),
-      itemCount: Strings.roles.length,
+      itemCount: roles.length,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () => context.read<AgentsBloc>().add(AgentsSorted(index)),
@@ -25,7 +26,7 @@ class _SortAgents extends StatelessWidget {
             child: Center(
               child: ValorantText(
                 isTitle: false,
-                text: Strings.roles[index],
+                text: roles[index],
               ),
             ),
           ),

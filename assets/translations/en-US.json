@@ -1,0 +1,28 @@
+{
+    "common": {
+        "agents": "Agents",
+        "weapons": "Weapons"
+    },
+    "roles": "All:Initiator:Duelist:Sentinel:Controller",
+    "abilities": "Abilities",
+    "retry": "Retry",
+    "weapon_detail": {
+        "weapon_stats": "Weapon Stats",
+        "magazine_size": "Magazine Size",
+        "reload_time": "Reload Time",
+        "reload_time_seconds": "{value} sec",
+        "fire_rate": "Fire Rate",
+        "fire_rate_seconds": "{value} / sec",
+        "damage_ranges": "Damage Ranges",
+        "damage_ranges_meters": "{start} - {end} Meters",
+        "head_damage": "Head Damage",
+        "body_damage": "Body Damage",
+        "leg_damage": "Leg Damage"
+    },
+    "errors": {
+        "dio_error": "Dio Error occured: {message}",
+        "unknown_error": "An unknown error occured.",
+        "null_response_error": "No content error.",
+        "no_connection_error": "Please check your connection."
+    }
+}

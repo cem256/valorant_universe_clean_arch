@@ -21,6 +21,7 @@ jobs:
          channel: "stable"
       - run: flutter pub get
       - run: flutter pub run build_runner build --delete-conflicting-outputs
+      - run: flutter pub run easy_localization:generate  --output-dir lib/core/locale/ --format keys -o locale_keys.g.dart --source-dir assets/translations
       - run: flutter test
       
   build_ios:

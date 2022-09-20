@@ -11,6 +11,11 @@ import 'feature/agents/domain/repositories/agent_repository.dart';
 import 'feature/agents/domain/use_cases/fetch_all_agents_use_case.dart';
 import 'feature/agents/domain/use_cases/sort_agents_use_case.dart';
 import 'feature/agents/presentation/bloc/agents_bloc.dart';
+import 'feature/maps/data/data_sources/remote/maps_remote_data_source.dart';
+import 'feature/maps/data/repositories/map_repository_imp.dart';
+import 'feature/maps/domain/repositories/map_repository.dart';
+import 'feature/maps/domain/use_cases/fetch_all_maps_use_case.dart';
+import 'feature/maps/presentation/bloc/maps_bloc.dart';
 import 'feature/weapons/data/data_sources/remote/weapons_remote_data_source.dart';
 import 'feature/weapons/data/repositories/weapon_repository_imp.dart';
 import 'feature/weapons/domain/repositories/weapon_repository.dart';
@@ -81,6 +86,34 @@ void initServices() {
   // Data sources
   getIt.registerLazySingleton(
     () => WeaponsRemoteDataSource(dio: getIt<NetworkManager>().dio),
+  );
+
+  // Features - Maps
+  // Bloc
+  getIt.registerFactory(
+    () => MapsBloc(
+      fetchAllMapsUseCase: getIt(),
+    ),
+  );
+
+  // Use cases
+  getIt.registerLazySingleton(
+    () => FetchAllMapsUseCase(
+      mapRepository: getIt(),
+    ),
+  );
+
+  // Repository
+  getIt.registerLazySingleton<MapRepository>(
+    () => MapRepositoryImp(
+      mapsRemoteDataSource: getIt(),
+      networkInfo: getIt(),
+    ),
+  );
+
+  // Data sources
+  getIt.registerLazySingleton(
+    () => MapsRemoteDataSource(dio: getIt<NetworkManager>().dio),
   );
 
   // Core

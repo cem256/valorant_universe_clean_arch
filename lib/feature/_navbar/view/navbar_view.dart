@@ -16,6 +16,7 @@ class NavbarView extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         AgentsRoute(),
+        MapsRoute(),
         WeaponsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -32,6 +33,10 @@ class NavbarView extends StatelessWidget {
             SalomonBottomBarItem(
               title: Text(LocaleKeys.common_agents.tr()),
               icon: const Icon(CustomIcons.agent),
+            ),
+            SalomonBottomBarItem(
+              title: Text(LocaleKeys.common_maps.tr()),
+              icon: const Icon(CustomIcons.map),
             ),
             SalomonBottomBarItem(
               title: Text(LocaleKeys.common_weapons.tr()),

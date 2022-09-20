@@ -9,17 +9,21 @@ A simple app to demonstrate Clean Architecture
     <td>Splash</td>
     <td>Agents</td>
     <td>Agent Detail</td>
+    <td>Maps</td>
   </tr>
   <tr>
      <td><img src="screenshots/splash.png"></td>
      <td><img src="screenshots/agents.png"></td>
      <td><img src="screenshots/agent_detail.png"></td>
+     <td><img src="screenshots/maps.png"></td>
   </tr>
   <tr>
+    <td>Map Detail</td>
     <td>Weapons</td>
     <td>Weapon Detail</td>
   </tr>
   <tr>
+     <td><img src="screenshots/map_detail.png"></td>
      <td><img src="screenshots/weapons.png"></td>
      <td><img src="screenshots/weapon_detail.png"></td>
   </tr>
@@ -76,9 +80,10 @@ cd valorant_universe_clean_arch
 flutter pub get
 ```
 
-##### Run the build runner command
+##### Open the project folder and execute these scripts in the terminal
 ```sh
-flutter pub run build_runner build
+sh scripst/build_runner.sh
+sh scripts/localization.sh
 ```
 
 ##### Run the project

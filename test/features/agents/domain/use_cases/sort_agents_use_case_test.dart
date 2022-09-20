@@ -20,7 +20,7 @@ void main() {
   });
 
   group("Sort agents use case test", () {
-    test("should return list of agent enitities length of 10 when index equals to 0", () {
+    test("Should return list of agent enitities length of 10 when index equals to 0", () {
       when(() => mockAgentRepository.sortAgents(allAgents: mockAgentEntity, index: 0)).thenReturn(mockAgentEntity);
       final result = sortAgentUseCase(allAgents: mockAgentEntity, index: 0);
 

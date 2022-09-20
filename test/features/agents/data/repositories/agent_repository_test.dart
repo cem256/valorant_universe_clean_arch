@@ -43,8 +43,8 @@ void main() {
     });
   });
 
-  group("fetch agents", () {
-    test("should return list of agent entities when there is no exception", () async {
+  group("Fetch agents", () {
+    test("Should return list of agent entities when there is no exception", () async {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       when(() => mockAgentsRemoteDataSource.fetchAgents()).thenAnswer((_) async => mockAgentModel);
       final result = await agentRepository.fetchAllAgents();
@@ -54,7 +54,7 @@ void main() {
     });
   });
 
-  test("should return ApiFailure when there is an exception", () async {
+  test("Should return ApiFailure when there is an exception", () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockAgentsRemoteDataSource.fetchAgents()).thenThrow(Exception());
     final result = await agentRepository.fetchAllAgents();
@@ -63,7 +63,7 @@ void main() {
     expect(result, isA<Left<ApiFailure, List<AgentEntity>>>());
   });
 
-  test("should return list of agent enitities length of 10 when index equals to 0", () {
+  test("Should return list of agent enitities length of 10 when index equals to 0", () {
     final result = agentRepository.sortAgents(allAgents: mockAgentEntity, index: 0);
 
     expect(result.length, 10);

@@ -25,7 +25,6 @@ import 'wrappers/weapons_wrapper.dart';
           initial: true,
           children: [
             AutoRoute(page: AgentsView, initial: true),
-            AutoRoute(page: AgentDetailsView),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),
@@ -34,7 +33,6 @@ import 'wrappers/weapons_wrapper.dart';
           name: "MapsRouter",
           children: [
             AutoRoute(page: MapsView, initial: true),
-            AutoRoute(page: MapDetailView),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),
@@ -43,12 +41,15 @@ import 'wrappers/weapons_wrapper.dart';
           name: "WeaponsRouter",
           children: [
             AutoRoute(page: WeaponsView, initial: true),
-            AutoRoute(page: WeaponDetailsView),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),
       ],
     ),
+    AutoRoute(page: AgentDetailsView),
+    AutoRoute(page: MapDetailView),
+    AutoRoute(page: WeaponDetailsView),
+    RedirectRoute(path: '*', redirectTo: ''),
   ],
 )
 class $AppRouter {}

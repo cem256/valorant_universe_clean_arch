@@ -15,9 +15,9 @@ class NavbarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        AgentsRoute(),
-        MapsRoute(),
-        WeaponsRoute(),
+        AgentsRouter(),
+        MapsRouter(),
+        WeaponsRouter(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return SalomonBottomBar(

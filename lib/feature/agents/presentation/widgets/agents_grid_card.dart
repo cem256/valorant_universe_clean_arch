@@ -25,11 +25,8 @@ class _AgentsGridCard extends StatelessWidget {
             Expanded(
               flex: 4,
               child: Center(
-                child: Hero(
-                  tag: agent.displayName,
-                  child: CustomCachedNetworkImage(
-                    imageUrl: agent.fullPortrait,
-                  ),
+                child: CustomCachedNetworkImage(
+                  imageUrl: agent.fullPortrait,
                 ),
               ),
             ),

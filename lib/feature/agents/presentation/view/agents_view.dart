@@ -13,7 +13,6 @@ import '../../../../core/widgets/appbar/valorant_app_bar.dart';
 import '../../../../core/widgets/error/valorant_error_widget.dart';
 import '../../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../../core/widgets/text/valorant_text.dart';
-import '../../../../locator.dart';
 import '../../domain/entities/agent/agent_entity.dart';
 import '../bloc/agents_bloc.dart';
 
@@ -28,16 +27,13 @@ class AgentsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ValorantAppBar(title: LocaleKeys.common_agents.tr()),
-      body: BlocProvider(
-        create: (_) => getIt<AgentsBloc>()..add(const AgentsFetched()),
-        child: const AgentsViewBody(),
-      ),
+      body: const _AgentsViewBody(),
     );
   }
 }
 
-class AgentsViewBody extends StatelessWidget {
-  const AgentsViewBody({Key? key}) : super(key: key);
+class _AgentsViewBody extends StatelessWidget {
+  const _AgentsViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

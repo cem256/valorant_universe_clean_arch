@@ -23,11 +23,8 @@ class _StackedAgentImage extends StatelessWidget {
             bottom: 0,
             child: SizedBox(
               height: context.veryHighValue4x,
-              child: Hero(
-                tag: agent.displayName,
-                child: CustomCachedNetworkImage(
-                  imageUrl: agent.fullPortrait,
-                ),
+              child: CustomCachedNetworkImage(
+                imageUrl: agent.fullPortrait,
               ),
             ),
           ),

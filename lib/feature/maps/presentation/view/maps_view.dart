@@ -2,19 +2,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/widgets/appbar/valorant_app_bar.dart';
-import '../../../../core/widgets/image/custom_cached_network_image.dart';
-import '../../../../core/widgets/text/valorant_text.dart';
-import '../../domain/entities/map_entity.dart';
 
 import '../../../../core/enums/page_status.dart';
+import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/failure/api_failure.dart';
 import '../../../../core/locale/locale_keys.g.dart';
 import '../../../../core/router/app_router.gr.dart';
 import '../../../../core/widgets/animation/loading_animation.dart';
+import '../../../../core/widgets/appbar/valorant_app_bar.dart';
 import '../../../../core/widgets/error/valorant_error_widget.dart';
-import '../../../../locator.dart';
+import '../../../../core/widgets/image/custom_cached_network_image.dart';
+import '../../../../core/widgets/text/valorant_text.dart';
+import '../../domain/entities/map_entity.dart';
 import '../bloc/maps_bloc.dart';
 
 part '../widgets/map_list_item.dart';
@@ -26,16 +25,13 @@ class MapsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ValorantAppBar(title: LocaleKeys.common_maps.tr()),
-      body: BlocProvider(
-        create: (_) => getIt<MapsBloc>()..add(const MapsFetched()),
-        child: const MapsViewBody(),
-      ),
+      body: const _MapsViewBody(),
     );
   }
 }
 
-class MapsViewBody extends StatelessWidget {
-  const MapsViewBody({Key? key}) : super(key: key);
+class _MapsViewBody extends StatelessWidget {
+  const _MapsViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

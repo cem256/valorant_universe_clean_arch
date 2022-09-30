@@ -7,22 +7,48 @@ import '../../feature/map_detail/view/map_detail_view.dart';
 import '../../feature/maps/presentation/view/maps_view.dart';
 import '../../feature/weapon_details/view/weapon_details_view.dart';
 import '../../feature/weapons/presentation/view/weapons_view.dart';
+import 'wrappers/agents_wrapper.dart';
+import 'wrappers/maps_wrapper.dart';
+import 'wrappers/weapons_wrapper.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: "View,Route",
+  preferRelativeImports: true,
   routes: <AutoRoute>[
-    MaterialRoute(
+    AutoRoute(
       page: NavbarView,
       initial: true,
       children: [
-        MaterialRoute(page: AgentsView, initial: true),
-        MaterialRoute(page: MapsView),
-        MaterialRoute(page: WeaponsView),
+        AutoRoute(
+          page: AgentsWrapper,
+          name: "AgentsRouter",
+          initial: true,
+          children: [
+            AutoRoute(page: AgentsView, initial: true),
+            AutoRoute(page: AgentDetailsView),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+        AutoRoute(
+          page: MapsWrapper,
+          name: "MapsRouter",
+          children: [
+            AutoRoute(page: MapsView, initial: true),
+            AutoRoute(page: MapDetailView),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+        AutoRoute(
+          page: WeaponsWrapper,
+          name: "WeaponsRouter",
+          children: [
+            AutoRoute(page: WeaponsView, initial: true),
+            AutoRoute(page: WeaponDetailsView),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
       ],
     ),
-    MaterialRoute(page: AgentDetailsView),
-    MaterialRoute(page: MapDetailView),
-    MaterialRoute(page: WeaponDetailsView),
   ],
 )
 class $AppRouter {}

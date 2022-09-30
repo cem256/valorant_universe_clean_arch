@@ -13,7 +13,6 @@ import '../../../../core/widgets/appbar/valorant_app_bar.dart';
 import '../../../../core/widgets/error/valorant_error_widget.dart';
 import '../../../../core/widgets/image/custom_cached_network_image.dart';
 import '../../../../core/widgets/text/valorant_text.dart';
-import '../../../../locator.dart';
 import '../../domain/entities/weapon/weapon_entity.dart';
 import '../bloc/weapons_bloc.dart';
 
@@ -29,16 +28,13 @@ class WeaponsView extends StatelessWidget {
       appBar: ValorantAppBar(
         title: LocaleKeys.common_weapons.tr(),
       ),
-      body: BlocProvider(
-        create: (_) => getIt<WeaponsBloc>()..add(const WeaponsFetched()),
-        child: const WeaponsViewBody(),
-      ),
+      body: const _WeaponsViewBody(),
     );
   }
 }
 
-class WeaponsViewBody extends StatelessWidget {
-  const WeaponsViewBody({Key? key}) : super(key: key);
+class _WeaponsViewBody extends StatelessWidget {
+  const _WeaponsViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

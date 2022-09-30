@@ -18,11 +18,8 @@ class _WeaponDetailCard extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Center(
-              child: Hero(
-                tag: weapon.displayName,
-                child: CustomCachedNetworkImage(
-                  imageUrl: weapon.displayIcon,
-                ),
+              child: CustomCachedNetworkImage(
+                imageUrl: weapon.displayIcon,
               ),
             ),
           ),

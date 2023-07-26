@@ -1,6 +1,6 @@
 # Valorant Universe Clean Architecture
 
-Provides information about agents, maps and weapons in the game VALORANT. Built with Clean Architecture, Flutter Bloc and Valorant-Api.
+Provides information about agents, maps and weapons for Valorant. Built with Clean Architecture, Flutter Bloc and Valorant-Api
 
 ## Preview
 

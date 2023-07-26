@@ -23,7 +23,7 @@ void main() {
     mockWeaponEntities = List.generate(10, (index) => MockWeaponEntity());
   });
 
-  group("Weapons Bloc Tests", () {
+  group('Weapons Bloc Tests', () {
     test("Initial value of the 'status' variable must be 'PageStatus.initial' at start", () {
       expect(weaponsBloc.state.status, PageStatus.initial);
     });
@@ -32,11 +32,11 @@ void main() {
       expect(weaponsBloc.state.status, PageStatus.initial);
     });
     test("Default value of the 'weapons' variable must be '[]' at start", () {
-      expect(weaponsBloc.state.weapons, []);
+      expect(weaponsBloc.state.weapons, <WeaponEntity>[]);
     });
 
-    blocTest(
-      "Fetch all weapons error case test",
+    blocTest<WeaponsBloc, WeaponsState>(
+      'Fetch all weapons error case test',
       setUp: () {
         when(() => fetchAllWeaponsUseCase()).thenAnswer(
           (_) async => const Left(ApiFailure.unknownFailure()),
@@ -53,8 +53,8 @@ void main() {
       ],
     );
 
-    blocTest(
-      "Fetch all weapons success case test",
+    blocTest<WeaponsBloc, WeaponsState>(
+      'Fetch all weapons success case test',
       setUp: () {
         when(() => fetchAllWeaponsUseCase()).thenAnswer(
           (_) async => Right(mockWeaponEntities),

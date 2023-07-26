@@ -25,7 +25,7 @@ void main() {
     mockMapEntities = List.generate(10, (index) => MockMapEntity());
   });
 
-  group("Maps Bloc Tests", () {
+  group('Maps Bloc Tests', () {
     test("Initial value of the 'status' variable must be 'PageStatus.initial' at start", () {
       expect(mapsBloc.state.status, PageStatus.initial);
     });
@@ -33,11 +33,11 @@ void main() {
       expect(mapsBloc.state.status, PageStatus.initial);
     });
     test("Default value of the 'maps' variable must be '[]' at start", () {
-      expect(mapsBloc.state.maps, []);
+      expect(mapsBloc.state.maps, <MapEntity>[]);
     });
 
-    blocTest(
-      "Fetch all maps error case test",
+    blocTest<MapsBloc, MapsState>(
+      'Fetch all maps error case test',
       setUp: () {
         when(() => mockFetchAllMapsUseCase()).thenAnswer(
           (_) async => const Left(
@@ -56,8 +56,8 @@ void main() {
       ],
     );
 
-    blocTest(
-      "Fetch all maps success case test",
+    blocTest<MapsBloc, MapsState>(
+      'Fetch all maps success case test',
       setUp: () {
         when(() => mockFetchAllMapsUseCase()).thenAnswer(
           (_) async => Right(mockMapEntities),

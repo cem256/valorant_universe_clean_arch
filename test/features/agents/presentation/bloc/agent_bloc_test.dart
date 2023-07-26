@@ -31,7 +31,7 @@ void main() {
     mockAgentEntities = List.generate(10, (index) => MockAgentEntity());
   });
 
-  group("Agents Bloc Tests", () {
+  group('Agents Bloc Tests', () {
     test("Initial value of the 'status' variable must be 'PageStatus.initial' at start", () {
       expect(agentsBloc.state.status, PageStatus.initial);
     });
@@ -40,19 +40,19 @@ void main() {
       expect(agentsBloc.state.status, PageStatus.initial);
     });
     test("Default value of the 'agents' variable must be '[]' at start", () {
-      expect(agentsBloc.state.agents, []);
+      expect(agentsBloc.state.agents, <AgentEntity>[]);
     });
 
     test("Default value of the 'allAgents' variable must be '[]' at start", () {
-      expect(agentsBloc.state.allAgents, []);
+      expect(agentsBloc.state.allAgents, <AgentEntity>[]);
     });
 
     test("Default value of the 'selectedIndex' variable must be '0' at start", () {
       expect(agentsBloc.state.selectedIndex, 0);
     });
 
-    blocTest(
-      "Fetch all agents error case test",
+    blocTest<AgentsBloc, AgentsState>(
+      'Fetch all agents error case test',
       setUp: () {
         when(() => mockFetchAllAgentsUseCase()).thenAnswer(
           (_) async => const Left(ApiFailure.unknownFailure()),
@@ -69,8 +69,8 @@ void main() {
       ],
     );
 
-    blocTest(
-      "Fetch all agents success case test",
+    blocTest<AgentsBloc, AgentsState>(
+      'Fetch all agents success case test',
       setUp: () {
         when(() => mockFetchAllAgentsUseCase()).thenAnswer(
           (_) async => Right(mockAgentEntities),

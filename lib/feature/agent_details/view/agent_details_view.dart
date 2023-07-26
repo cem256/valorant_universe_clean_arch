@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ import '../../agents/domain/entities/agent/agent_entity.dart';
 part '../widgets/agent_abilities.dart';
 part '../widgets/stacked_agent_image.dart';
 
+@RoutePage()
 class AgentDetailsView extends StatelessWidget {
   const AgentDetailsView({super.key, required this.agent});
 
@@ -32,7 +34,7 @@ class AgentDetailsView extends StatelessWidget {
                 children: [
                   Text(
                     agent.description,
-                    style: context.textTheme.bodyText1,
+                    style: context.textTheme.bodyLarge,
                   ),
                   SizedBox(
                     height: context.mediumValue,

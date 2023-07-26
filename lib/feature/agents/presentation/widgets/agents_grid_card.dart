@@ -1,7 +1,7 @@
 part of '../view/agents_view.dart';
 
 class _AgentsGridCard extends StatelessWidget {
-  const _AgentsGridCard({Key? key, required this.agent}) : super(key: key);
+  const _AgentsGridCard({required this.agent});
 
   final AgentEntity agent;
 

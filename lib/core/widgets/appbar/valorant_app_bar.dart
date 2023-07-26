@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ValorantAppBar extends StatelessWidget with PreferredSizeWidget {
+class ValorantAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ValorantAppBar({super.key, required this.title});
 
   final String title;

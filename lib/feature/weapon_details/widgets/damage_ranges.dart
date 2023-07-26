@@ -1,28 +1,30 @@
 part of '../view/weapon_details_view.dart';
 
 class _DamageRanges extends StatelessWidget {
-  const _DamageRanges({Key? key, required this.weaponStats}) : super(key: key);
+  const _DamageRanges({super.key, required this.weaponStats});
 
   final WeaponStatsEntity weaponStats;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: ((context, index) => SizedBox(
-            height: context.mediumValue,
-          )),
+      separatorBuilder: (context, index) => SizedBox(
+        height: context.mediumValue,
+      ),
       itemCount: weaponStats.damageRanges.length,
-      itemBuilder: ((context, index) {
+      itemBuilder: (context, index) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _WeaponInfoTile(
-              leftString: LocaleKeys.weapon_detail_damage_ranges_meters.tr(namedArgs: {
-                "start": weaponStats.damageRanges[index].rangeStartMeters,
-                "end": weaponStats.damageRanges[index].rangeEndMeters
-              }),
-              rightString: "",
+              leftString: LocaleKeys.weapon_detail_damage_ranges_meters.tr(
+                namedArgs: {
+                  'start': weaponStats.damageRanges[index].rangeStartMeters,
+                  'end': weaponStats.damageRanges[index].rangeEndMeters
+                },
+              ),
+              rightString: '',
             ),
             const Divider(),
             _WeaponInfoTile(
@@ -42,7 +44,7 @@ class _DamageRanges extends StatelessWidget {
             const Divider(),
           ],
         );
-      }),
+      },
     );
   }
 }

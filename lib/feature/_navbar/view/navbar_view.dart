@@ -3,21 +3,22 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../../core/extensions/context_extension.dart';
-import '../../../core/locale/locale_keys.g.dart';
-import '../../../core/router/app_router.gr.dart';
-import '../../../core/widgets/icons/custom_icons.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
+import 'package:valorant_universe_remastered/core/router/app_router.gr.dart';
+import 'package:valorant_universe_remastered/core/widgets/icons/custom_icons.dart';
 
+@RoutePage()
 class NavbarView extends StatelessWidget {
-  const NavbarView({Key? key}) : super(key: key);
+  const NavbarView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        AgentsRouter(),
-        MapsRouter(),
-        WeaponsRouter(),
+        AgentsRoute(),
+        MapsRoute(),
+        WeaponsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return SalomonBottomBar(

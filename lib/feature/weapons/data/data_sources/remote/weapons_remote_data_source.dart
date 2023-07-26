@@ -1,24 +1,23 @@
 import 'package:dio/dio.dart';
 
-import '../../../../../core/exceptions/exceptions.dart';
-import '../../model/weapon/weapon_model.dart';
+import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/weapon_model.dart';
 
 class WeaponsRemoteDataSource {
-  final Dio dio;
-
   WeaponsRemoteDataSource({required this.dio});
+  final Dio dio;
 
   Future<List<WeaponModel>> fetchWeapons() async {
     try {
-      final response = await dio.get("/weapons");
-      List? model = response.data["data"];
+      final response = await dio.get<Map<String, dynamic>>('/weapons');
+      final model = response.data?['data'] as List?;
       if (model == null) {
         throw NullResponseException();
       } else {
-        return model.map((e) => WeaponModel.fromJson(e)).toList();
+        return model.map((e) => WeaponModel.fromJson(e as Map<String, dynamic>)).toList();
       }
-    } on DioError catch (e) {
-      throw DioException(e.message);
+    } on DioException catch (e) {
+      throw DioException(requestOptions: e.requestOptions, message: e.message);
     } catch (_) {
       throw UnknownException();
     }

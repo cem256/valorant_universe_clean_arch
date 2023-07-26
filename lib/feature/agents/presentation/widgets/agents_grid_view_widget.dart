@@ -1,7 +1,7 @@
 part of '../view/agents_view.dart';
 
 class _AgentsGridView extends StatelessWidget {
-  const _AgentsGridView({Key? key, required this.agents}) : super(key: key);
+  const _AgentsGridView({required this.agents});
 
   final List<AgentEntity> agents;
 
@@ -9,13 +9,14 @@ class _AgentsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: context.mediumValue,
-          crossAxisSpacing: context.mediumValue,
-          childAspectRatio: 3 / 4,
-          crossAxisCount: 2),
+        mainAxisSpacing: context.mediumValue,
+        crossAxisSpacing: context.mediumValue,
+        childAspectRatio: 3 / 4,
+        crossAxisCount: 2,
+      ),
       itemCount: agents.length,
       itemBuilder: (context, index) {
-        final AgentEntity agent = agents[index];
+        final agent = agents[index];
         return _AgentsGridCard(agent: agent);
       },
     );

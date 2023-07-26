@@ -1,7 +1,7 @@
 part of '../view/weapons_view.dart';
 
 class _WeaponsGridCard extends StatelessWidget {
-  const _WeaponsGridCard({Key? key, required this.weapon}) : super(key: key);
+  const _WeaponsGridCard({required this.weapon});
 
   final WeaponEntity weapon;
 

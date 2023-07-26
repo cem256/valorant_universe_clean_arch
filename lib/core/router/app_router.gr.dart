@@ -1,165 +1,247 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i11;
-import 'package:flutter/material.dart' as _i12;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i10;
+import 'package:valorant_universe_remastered/feature/_navbar/view/navbar_view.dart'
+    as _i7;
+import 'package:valorant_universe_remastered/feature/agent_details/view/agent_details_view.dart'
+    as _i6;
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart'
+    as _i12;
+import 'package:valorant_universe_remastered/feature/agents/presentation/view/agents_view.dart'
+    as _i3;
+import 'package:valorant_universe_remastered/feature/map_detail/view/map_detail_view.dart'
+    as _i5;
+import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart'
+    as _i11;
+import 'package:valorant_universe_remastered/feature/maps/presentation/view/maps_view.dart'
+    as _i1;
+import 'package:valorant_universe_remastered/feature/weapon_details/view/weapon_details_view.dart'
+    as _i2;
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart'
+    as _i9;
+import 'package:valorant_universe_remastered/feature/weapons/presentation/view/weapons_view.dart'
+    as _i4;
 
-import '../../feature/_navbar/view/navbar_view.dart' as _i1;
-import '../../feature/agent_details/view/agent_details_view.dart' as _i2;
-import '../../feature/agents/domain/entities/agent/agent_entity.dart' as _i13;
-import '../../feature/agents/presentation/view/agents_view.dart' as _i8;
-import '../../feature/map_detail/view/map_detail_view.dart' as _i3;
-import '../../feature/maps/domain/entities/map_entity.dart' as _i14;
-import '../../feature/maps/presentation/view/maps_view.dart' as _i9;
-import '../../feature/weapon_details/view/weapon_details_view.dart' as _i4;
-import '../../feature/weapons/domain/entities/weapon/weapon_entity.dart'
-    as _i15;
-import '../../feature/weapons/presentation/view/weapons_view.dart' as _i10;
-import 'wrappers/agents_wrapper.dart' as _i5;
-import 'wrappers/maps_wrapper.dart' as _i6;
-import 'wrappers/weapons_wrapper.dart' as _i7;
-
-class AppRouter extends _i11.RootStackRouter {
-  AppRouter([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+abstract class $AppRouter extends _i8.RootStackRouter {
+  $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i11.PageFactory> pagesMap = {
-    NavbarRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.NavbarView());
-    },
-    AgentDetailsRoute.name: (routeData) {
-      final args = routeData.argsAs<AgentDetailsRouteArgs>();
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i2.AgentDetailsView(key: args.key, agent: args.agent));
-    },
-    MapDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<MapDetailRouteArgs>();
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i3.MapDetailView(key: args.key, map: args.map));
+  final Map<String, _i8.PageFactory> pagesMap = {
+    MapsRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i1.MapsView(),
+      );
     },
     WeaponDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<WeaponDetailsRouteArgs>();
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i4.WeaponDetailsView(key: args.key, weapon: args.weapon));
-    },
-    AgentsRouter.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i11.WrappedRoute(child: _i5.AgentsWrapper()));
-    },
-    MapsRouter.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i11.WrappedRoute(child: _i6.MapsWrapper()));
-    },
-    WeaponsRouter.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i11.WrappedRoute(child: _i7.WeaponsWrapper()));
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i2.WeaponDetailsView(
+          weapon: args.weapon,
+          key: args.key,
+        ),
+      );
     },
     AgentsRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.AgentsView());
-    },
-    MapsRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i9.MapsView());
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.AgentsView(),
+      );
     },
     WeaponsRoute.name: (routeData) {
-      return _i11.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.WeaponsView());
-    }
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i4.WeaponsView(),
+      );
+    },
+    MapDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<MapDetailRouteArgs>();
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i5.MapDetailView(
+          map: args.map,
+          key: args.key,
+        ),
+      );
+    },
+    AgentDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<AgentDetailsRouteArgs>();
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i6.AgentDetailsView(
+          key: args.key,
+          agent: args.agent,
+        ),
+      );
+    },
+    NavbarRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.NavbarView(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [_i1.MapsView]
+class MapsRoute extends _i8.PageRouteInfo<void> {
+  const MapsRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          MapsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MapsRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i2.WeaponDetailsView]
+class WeaponDetailsRoute extends _i8.PageRouteInfo<WeaponDetailsRouteArgs> {
+  WeaponDetailsRoute({
+    required _i9.WeaponEntity weapon,
+    _i10.Key? key,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+          WeaponDetailsRoute.name,
+          args: WeaponDetailsRouteArgs(
+            weapon: weapon,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaponDetailsRoute';
+
+  static const _i8.PageInfo<WeaponDetailsRouteArgs> page =
+      _i8.PageInfo<WeaponDetailsRouteArgs>(name);
+}
+
+class WeaponDetailsRouteArgs {
+  const WeaponDetailsRouteArgs({
+    required this.weapon,
+    this.key,
+  });
+
+  final _i9.WeaponEntity weapon;
+
+  final _i10.Key? key;
 
   @override
-  List<_i11.RouteConfig> get routes => [
-        _i11.RouteConfig(NavbarRoute.name, path: '/', children: [
-          _i11.RouteConfig(AgentsRouter.name,
-              path: '',
-              parent: NavbarRoute.name,
-              children: [
-                _i11.RouteConfig(AgentsRoute.name,
-                    path: '', parent: AgentsRouter.name),
-                _i11.RouteConfig('*#redirect',
-                    path: '*',
-                    parent: AgentsRouter.name,
-                    redirectTo: '',
-                    fullMatch: true)
-              ]),
-          _i11.RouteConfig(MapsRouter.name,
-              path: 'maps-wrapper',
-              parent: NavbarRoute.name,
-              children: [
-                _i11.RouteConfig(MapsRoute.name,
-                    path: '', parent: MapsRouter.name),
-                _i11.RouteConfig('*#redirect',
-                    path: '*',
-                    parent: MapsRouter.name,
-                    redirectTo: '',
-                    fullMatch: true)
-              ]),
-          _i11.RouteConfig(WeaponsRouter.name,
-              path: 'weapons-wrapper',
-              parent: NavbarRoute.name,
-              children: [
-                _i11.RouteConfig(WeaponsRoute.name,
-                    path: '', parent: WeaponsRouter.name),
-                _i11.RouteConfig('*#redirect',
-                    path: '*',
-                    parent: WeaponsRouter.name,
-                    redirectTo: '',
-                    fullMatch: true)
-              ])
-        ]),
-        _i11.RouteConfig(AgentDetailsRoute.name, path: '/agent-details-view'),
-        _i11.RouteConfig(MapDetailRoute.name, path: '/map-detail-view'),
-        _i11.RouteConfig(WeaponDetailsRoute.name, path: '/weapon-details-view'),
-        _i11.RouteConfig('*#redirect',
-            path: '*', redirectTo: '', fullMatch: true)
-      ];
+  String toString() {
+    return 'WeaponDetailsRouteArgs{weapon: $weapon, key: $key}';
+  }
 }
 
 /// generated route for
-/// [_i1.NavbarView]
-class NavbarRoute extends _i11.PageRouteInfo<void> {
-  const NavbarRoute({List<_i11.PageRouteInfo>? children})
-      : super(NavbarRoute.name, path: '/', initialChildren: children);
+/// [_i3.AgentsView]
+class AgentsRoute extends _i8.PageRouteInfo<void> {
+  const AgentsRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          AgentsRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'NavbarRoute';
+  static const String name = 'AgentsRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.AgentDetailsView]
-class AgentDetailsRoute extends _i11.PageRouteInfo<AgentDetailsRouteArgs> {
-  AgentDetailsRoute({_i12.Key? key, required _i13.AgentEntity agent})
-      : super(AgentDetailsRoute.name,
-            path: '/agent-details-view',
-            args: AgentDetailsRouteArgs(key: key, agent: agent));
+/// [_i4.WeaponsView]
+class WeaponsRoute extends _i8.PageRouteInfo<void> {
+  const WeaponsRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          WeaponsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaponsRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.MapDetailView]
+class MapDetailRoute extends _i8.PageRouteInfo<MapDetailRouteArgs> {
+  MapDetailRoute({
+    required _i11.MapEntity map,
+    _i10.Key? key,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+          MapDetailRoute.name,
+          args: MapDetailRouteArgs(
+            map: map,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapDetailRoute';
+
+  static const _i8.PageInfo<MapDetailRouteArgs> page =
+      _i8.PageInfo<MapDetailRouteArgs>(name);
+}
+
+class MapDetailRouteArgs {
+  const MapDetailRouteArgs({
+    required this.map,
+    this.key,
+  });
+
+  final _i11.MapEntity map;
+
+  final _i10.Key? key;
+
+  @override
+  String toString() {
+    return 'MapDetailRouteArgs{map: $map, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i6.AgentDetailsView]
+class AgentDetailsRoute extends _i8.PageRouteInfo<AgentDetailsRouteArgs> {
+  AgentDetailsRoute({
+    _i10.Key? key,
+    required _i12.AgentEntity agent,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+          AgentDetailsRoute.name,
+          args: AgentDetailsRouteArgs(
+            key: key,
+            agent: agent,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'AgentDetailsRoute';
+
+  static const _i8.PageInfo<AgentDetailsRouteArgs> page =
+      _i8.PageInfo<AgentDetailsRouteArgs>(name);
 }
 
 class AgentDetailsRouteArgs {
-  const AgentDetailsRouteArgs({this.key, required this.agent});
+  const AgentDetailsRouteArgs({
+    this.key,
+    required this.agent,
+  });
 
-  final _i12.Key? key;
+  final _i10.Key? key;
 
-  final _i13.AgentEntity agent;
+  final _i12.AgentEntity agent;
 
   @override
   String toString() {
@@ -168,101 +250,15 @@ class AgentDetailsRouteArgs {
 }
 
 /// generated route for
-/// [_i3.MapDetailView]
-class MapDetailRoute extends _i11.PageRouteInfo<MapDetailRouteArgs> {
-  MapDetailRoute({_i12.Key? key, required _i14.MapEntity map})
-      : super(MapDetailRoute.name,
-            path: '/map-detail-view',
-            args: MapDetailRouteArgs(key: key, map: map));
+/// [_i7.NavbarView]
+class NavbarRoute extends _i8.PageRouteInfo<void> {
+  const NavbarRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          NavbarRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'MapDetailRoute';
-}
+  static const String name = 'NavbarRoute';
 
-class MapDetailRouteArgs {
-  const MapDetailRouteArgs({this.key, required this.map});
-
-  final _i12.Key? key;
-
-  final _i14.MapEntity map;
-
-  @override
-  String toString() {
-    return 'MapDetailRouteArgs{key: $key, map: $map}';
-  }
-}
-
-/// generated route for
-/// [_i4.WeaponDetailsView]
-class WeaponDetailsRoute extends _i11.PageRouteInfo<WeaponDetailsRouteArgs> {
-  WeaponDetailsRoute({_i12.Key? key, required _i15.WeaponEntity weapon})
-      : super(WeaponDetailsRoute.name,
-            path: '/weapon-details-view',
-            args: WeaponDetailsRouteArgs(key: key, weapon: weapon));
-
-  static const String name = 'WeaponDetailsRoute';
-}
-
-class WeaponDetailsRouteArgs {
-  const WeaponDetailsRouteArgs({this.key, required this.weapon});
-
-  final _i12.Key? key;
-
-  final _i15.WeaponEntity weapon;
-
-  @override
-  String toString() {
-    return 'WeaponDetailsRouteArgs{key: $key, weapon: $weapon}';
-  }
-}
-
-/// generated route for
-/// [_i5.AgentsWrapper]
-class AgentsRouter extends _i11.PageRouteInfo<void> {
-  const AgentsRouter({List<_i11.PageRouteInfo>? children})
-      : super(AgentsRouter.name, path: '', initialChildren: children);
-
-  static const String name = 'AgentsRouter';
-}
-
-/// generated route for
-/// [_i6.MapsWrapper]
-class MapsRouter extends _i11.PageRouteInfo<void> {
-  const MapsRouter({List<_i11.PageRouteInfo>? children})
-      : super(MapsRouter.name, path: 'maps-wrapper', initialChildren: children);
-
-  static const String name = 'MapsRouter';
-}
-
-/// generated route for
-/// [_i7.WeaponsWrapper]
-class WeaponsRouter extends _i11.PageRouteInfo<void> {
-  const WeaponsRouter({List<_i11.PageRouteInfo>? children})
-      : super(WeaponsRouter.name,
-            path: 'weapons-wrapper', initialChildren: children);
-
-  static const String name = 'WeaponsRouter';
-}
-
-/// generated route for
-/// [_i8.AgentsView]
-class AgentsRoute extends _i11.PageRouteInfo<void> {
-  const AgentsRoute() : super(AgentsRoute.name, path: '');
-
-  static const String name = 'AgentsRoute';
-}
-
-/// generated route for
-/// [_i9.MapsView]
-class MapsRoute extends _i11.PageRouteInfo<void> {
-  const MapsRoute() : super(MapsRoute.name, path: '');
-
-  static const String name = 'MapsRoute';
-}
-
-/// generated route for
-/// [_i10.WeaponsView]
-class WeaponsRoute extends _i11.PageRouteInfo<void> {
-  const WeaponsRoute() : super(WeaponsRoute.name, path: '');
-
-  static const String name = 'WeaponsRoute';
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }

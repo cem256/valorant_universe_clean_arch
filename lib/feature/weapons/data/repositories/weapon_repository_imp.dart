@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
-import '../../../../core/exceptions/exceptions.dart';
-import '../../../../core/failure/api_failure.dart';
-import '../../../../core/network/network_info.dart';
-import '../../domain/entities/weapon/weapon_entity.dart';
-import '../../domain/repositories/weapon_repository.dart';
-import '../data_sources/remote/weapons_remote_data_source.dart';
-import '../model/weapon/weapon_model.dart';
+import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/core/network/network_info.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/repositories/weapon_repository.dart';
+import 'package:valorant_universe_remastered/feature/weapons/data/data_sources/remote/weapons_remote_data_source.dart';
+import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/weapon_model.dart';
 
 class WeaponRepositoryImp implements WeaponRepository {
   WeaponRepositoryImp({

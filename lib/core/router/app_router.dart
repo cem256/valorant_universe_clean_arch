@@ -1,55 +1,28 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:valorant_universe_remastered/core/router/app_router.gr.dart';
 
-import '../../feature/_navbar/view/navbar_view.dart';
-import '../../feature/agent_details/view/agent_details_view.dart';
-import '../../feature/agents/presentation/view/agents_view.dart';
-import '../../feature/map_detail/view/map_detail_view.dart';
-import '../../feature/maps/presentation/view/maps_view.dart';
-import '../../feature/weapon_details/view/weapon_details_view.dart';
-import '../../feature/weapons/presentation/view/weapons_view.dart';
-import 'wrappers/agents_wrapper.dart';
-import 'wrappers/maps_wrapper.dart';
-import 'wrappers/weapons_wrapper.dart';
-
-@MaterialAutoRouter(
-  replaceInRouteName: "View,Route",
-  preferRelativeImports: true,
-  routes: <AutoRoute>[
-    AutoRoute(
-      page: NavbarView,
-      initial: true,
-      children: [
-        AutoRoute(
-          page: AgentsWrapper,
-          name: "AgentsRouter",
+@AutoRouterConfig(replaceInRouteName: 'View,Route')
+class AppRouter extends $AppRouter {
+  @override
+  List<AdaptiveRoute> get routes => [
+        AdaptiveRoute(
+          page: NavbarRoute.page,
           initial: true,
           children: [
-            AutoRoute(page: AgentsView, initial: true),
-            RedirectRoute(path: '*', redirectTo: ''),
+            AdaptiveRoute(
+              page: AgentsRoute.page,
+              initial: true,
+            ),
+            AdaptiveRoute(
+              page: WeaponsRoute.page,
+            ),
+            AdaptiveRoute(
+              page: MapsRoute.page,
+            ),
           ],
         ),
-        AutoRoute(
-          page: MapsWrapper,
-          name: "MapsRouter",
-          children: [
-            AutoRoute(page: MapsView, initial: true),
-            RedirectRoute(path: '*', redirectTo: ''),
-          ],
-        ),
-        AutoRoute(
-          page: WeaponsWrapper,
-          name: "WeaponsRouter",
-          children: [
-            AutoRoute(page: WeaponsView, initial: true),
-            RedirectRoute(path: '*', redirectTo: ''),
-          ],
-        ),
-      ],
-    ),
-    AutoRoute(page: AgentDetailsView),
-    AutoRoute(page: MapDetailView),
-    AutoRoute(page: WeaponDetailsView),
-    RedirectRoute(path: '*', redirectTo: ''),
-  ],
-)
-class $AppRouter {}
+        AdaptiveRoute(page: AgentDetailsRoute.page),
+        AdaptiveRoute(page: MapDetailRoute.page),
+        AdaptiveRoute(page: WeaponDetailsRoute.page),
+      ];
+}

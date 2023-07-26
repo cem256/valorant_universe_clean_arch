@@ -1,13 +1,13 @@
 part of '../view/agents_view.dart';
 
 class _SortAgents extends StatelessWidget {
-  const _SortAgents({Key? key, required this.selectedIndex}) : super(key: key);
+  const _SortAgents({required this.selectedIndex});
 
   final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> roles = LocaleKeys.roles.tr().split(":");
+    final roles = LocaleKeys.roles.tr().split(':');
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       separatorBuilder: (context, index) => SizedBox(

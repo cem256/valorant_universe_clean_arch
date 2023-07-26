@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../../core/exceptions/exceptions.dart';
-import '../../../../core/failure/api_failure.dart';
-import '../../../../core/network/network_info.dart';
-import '../../domain/entities/map_entity.dart';
-import '../../domain/repositories/map_repository.dart';
-import '../data_sources/remote/maps_remote_data_source.dart';
-import '../model/map_model.dart';
+import 'package:dio/dio.dart';
+import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/core/network/network_info.dart';
+import 'package:valorant_universe_remastered/feature/maps/data/data_sources/remote/maps_remote_data_source.dart';
+import 'package:valorant_universe_remastered/feature/maps/data/model/map_model.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/repositories/map_repository.dart';
 
 class MapRepositoryImp implements MapRepository {
   MapRepositoryImp({required this.mapsRemoteDataSource, required this.networkInfo});

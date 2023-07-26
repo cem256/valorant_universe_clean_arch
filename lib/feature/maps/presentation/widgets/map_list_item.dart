@@ -1,7 +1,7 @@
 part of '../view/maps_view.dart';
 
 class _MapListItem extends StatelessWidget {
-  const _MapListItem({Key? key, required this.map}) : super(key: key);
+  const _MapListItem({required this.map});
 
   final MapEntity map;
 

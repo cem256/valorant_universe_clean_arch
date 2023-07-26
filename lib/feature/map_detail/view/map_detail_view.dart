@@ -1,14 +1,16 @@
+import 'package:auto_route/annotations.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/context_extension.dart';
-import '../../../core/locale/locale_keys.g.dart';
-import '../../../core/widgets/appbar/valorant_app_bar.dart';
-import '../../../core/widgets/image/custom_cached_network_image.dart';
-import '../../maps/domain/entities/map_entity.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
+import 'package:valorant_universe_remastered/core/widgets/appbar/valorant_app_bar.dart';
+import 'package:valorant_universe_remastered/core/widgets/image/custom_cached_network_image.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
 
+@RoutePage()
 class MapDetailView extends StatelessWidget {
-  const MapDetailView({super.key, required this.map});
+  const MapDetailView({required this.map, super.key});
 
   final MapEntity map;
 

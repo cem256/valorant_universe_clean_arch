@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/failure/api_failure.dart';
-import '../entities/weapon/weapon_entity.dart';
-import '../repositories/weapon_repository.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/repositories/weapon_repository.dart';
 
 class FetchAllWeaponsUseCase {
   FetchAllWeaponsUseCase({required this.weaponRepository});

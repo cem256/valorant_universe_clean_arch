@@ -1,7 +1,7 @@
 part of '../view/weapon_details_view.dart';
 
 class _DamageRanges extends StatelessWidget {
-  const _DamageRanges({super.key, required this.weaponStats});
+  const _DamageRanges({required this.weaponStats});
 
   final WeaponStatsEntity weaponStats;
 

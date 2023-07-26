@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entities/damage_ranges/damage_ranges_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/damage_ranges/damage_ranges_entity.dart';
 
 part 'damage_ranges_model.freezed.dart';
 part 'damage_ranges_model.g.dart';
@@ -21,11 +21,11 @@ class DamageRangesModel with _$DamageRangesModel {
 extension DamageRangesModelX on DamageRangesModel {
   DamageRangesEntity toDamageRangesEntity() {
     return DamageRangesEntity(
-      rangeStartMeters: rangeStartMeters?.toStringAsFixed(0) ?? "N/A",
-      rangeEndMeters: rangeEndMeters?.toStringAsFixed(0) ?? "N/A",
-      headDamage: headDamage?.toStringAsFixed(1) ?? "N/A",
-      bodyDamage: bodyDamage?.toStringAsFixed(1) ?? "N/A",
-      legDamage: legDamage?.toStringAsFixed(1) ?? "N/A",
+      rangeStartMeters: rangeStartMeters?.toStringAsFixed(0) ?? 'N/A',
+      rangeEndMeters: rangeEndMeters?.toStringAsFixed(0) ?? 'N/A',
+      headDamage: headDamage?.toStringAsFixed(1) ?? 'N/A',
+      bodyDamage: bodyDamage?.toStringAsFixed(1) ?? 'N/A',
+      legDamage: legDamage?.toStringAsFixed(1) ?? 'N/A',
     );
   }
 }

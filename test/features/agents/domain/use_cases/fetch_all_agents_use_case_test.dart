@@ -21,8 +21,8 @@ void main() {
     mockAgentEntity = List.generate(10, (index) => MockAgentEntity());
   });
 
-  group("Fetch All Agents Use Case Test", () {
-    test("Should return list of agent entities when there is no exception", () async {
+  group('Fetch All Agents Use Case Test', () {
+    test('Should return list of agent entities when there is no exception', () async {
       when(() => mockAgentRepository.fetchAllAgents()).thenAnswer((_) async => Right(mockAgentEntity));
       final result = await fetchAllAgentsUseCase();
 
@@ -30,7 +30,7 @@ void main() {
       expect(result, isA<Right<ApiFailure, List<AgentEntity>>>());
     });
 
-    test("Should return ApiFailure when there is an exception", () async {
+    test('Should return ApiFailure when there is an exception', () async {
       when(() => mockAgentRepository.fetchAllAgents()).thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
       final result = await fetchAllAgentsUseCase();
 

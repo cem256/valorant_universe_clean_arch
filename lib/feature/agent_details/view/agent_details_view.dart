@@ -2,19 +2,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/context_extension.dart';
-import '../../../core/locale/locale_keys.g.dart';
-import '../../../core/widgets/image/custom_cached_network_image.dart';
-import '../../../core/widgets/text/valorant_text.dart';
-import '../../agents/domain/entities/ability/ability_entity.dart';
-import '../../agents/domain/entities/agent/agent_entity.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
+import 'package:valorant_universe_remastered/core/widgets/image/custom_cached_network_image.dart';
+import 'package:valorant_universe_remastered/core/widgets/text/valorant_text.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 
 part '../widgets/agent_abilities.dart';
 part '../widgets/stacked_agent_image.dart';
 
 @RoutePage()
 class AgentDetailsView extends StatelessWidget {
-  const AgentDetailsView({super.key, required this.agent});
+  const AgentDetailsView({required this.agent, super.key});
 
   final AgentEntity agent;
 

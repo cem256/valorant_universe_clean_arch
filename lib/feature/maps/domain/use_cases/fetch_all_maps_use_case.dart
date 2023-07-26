@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/failure/api_failure.dart';
-import '../entities/map_entity.dart';
-import '../repositories/map_repository.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/repositories/map_repository.dart';
 
 class FetchAllMapsUseCase {
   FetchAllMapsUseCase({required this.mapRepository});

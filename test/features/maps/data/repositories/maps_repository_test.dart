@@ -31,17 +31,17 @@ void main() {
     );
     mockMapModel = List.generate(10, (index) => MockMapModel());
   });
-  group("Checks the device connection", () {
-    test("Device is online", () {
+  group('Checks the device connection', () {
+    test('Device is online', () {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     });
-    test("Device is offline", () {
+    test('Device is offline', () {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
     });
   });
 
-  group("Fetch maps", () {
-    test("Should return list of map entities when there is no exception", () async {
+  group('Fetch maps', () {
+    test('Should return list of map entities when there is no exception', () async {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       when(() => mockMapsRemoteDataSource.fetchMaps()).thenAnswer((_) async => mockMapModel);
       final result = await mapRepository.fetchAllMaps();
@@ -51,7 +51,7 @@ void main() {
     });
   });
 
-  test("should return ApiFailure when there is an exception", () async {
+  test('should return ApiFailure when there is an exception', () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockMapsRemoteDataSource.fetchMaps()).thenThrow(Exception());
     final result = await mapRepository.fetchAllMaps();

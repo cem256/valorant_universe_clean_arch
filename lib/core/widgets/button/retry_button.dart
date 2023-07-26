@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../extensions/context_extension.dart';
-import '../../locale/locale_keys.g.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
 
 class RetryButton extends StatelessWidget {
-  const RetryButton({super.key, required this.onPressed});
+  const RetryButton({required this.onPressed, super.key});
 
   final void Function()? onPressed;
 

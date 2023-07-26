@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../constants/assets.dart';
-import '../../extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/constants/assets.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
 
 class LoadingAnimation extends StatelessWidget {
   const LoadingAnimation({super.key});

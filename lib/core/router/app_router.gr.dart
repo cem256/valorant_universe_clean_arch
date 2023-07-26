@@ -79,8 +79,8 @@ abstract class $AppRouter extends _i8.RootStackRouter {
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i6.AgentDetailsView(
-          key: args.key,
           agent: args.agent,
+          key: args.key,
         ),
       );
     },
@@ -215,14 +215,14 @@ class MapDetailRouteArgs {
 /// [_i6.AgentDetailsView]
 class AgentDetailsRoute extends _i8.PageRouteInfo<AgentDetailsRouteArgs> {
   AgentDetailsRoute({
-    _i10.Key? key,
     required _i12.AgentEntity agent,
+    _i10.Key? key,
     List<_i8.PageRouteInfo>? children,
   }) : super(
           AgentDetailsRoute.name,
           args: AgentDetailsRouteArgs(
-            key: key,
             agent: agent,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -235,17 +235,17 @@ class AgentDetailsRoute extends _i8.PageRouteInfo<AgentDetailsRouteArgs> {
 
 class AgentDetailsRouteArgs {
   const AgentDetailsRouteArgs({
-    this.key,
     required this.agent,
+    this.key,
   });
-
-  final _i10.Key? key;
 
   final _i12.AgentEntity agent;
 
+  final _i10.Key? key;
+
   @override
   String toString() {
-    return 'AgentDetailsRouteArgs{key: $key, agent: $agent}';
+    return 'AgentDetailsRouteArgs{agent: $agent, key: $key}';
   }
 }
 

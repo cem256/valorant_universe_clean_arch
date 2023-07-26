@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
-  const CustomCachedNetworkImage({Key? key, required this.imageUrl}) : super(key: key);
+  const CustomCachedNetworkImage({required this.imageUrl, super.key});
 
   final String imageUrl;
 

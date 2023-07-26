@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../ability/ability_entity.dart';
-import '../role/role_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/ability/ability_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/role/role_entity.dart';
 
 part 'agent_entity.freezed.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ValorantAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ValorantAppBar({super.key, required this.title});
+  const ValorantAppBar({required this.title, super.key});
 
   final String title;
   @override
@@ -10,7 +10,7 @@ class ValorantAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontFamily: "Valorant",
+          fontFamily: 'Valorant',
         ),
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../domain/entities/weapon/weapon_entity.dart';
-import '../weapon_stats/weapon_stats_model.dart';
+import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon_stats/weapon_stats_model.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
 
 part 'weapon_model.freezed.dart';
 part 'weapon_model.g.dart';
@@ -22,9 +21,9 @@ class WeaponModel with _$WeaponModel {
 extension WeaponModelX on WeaponModel {
   WeaponEntity toWeaponEntity() {
     return WeaponEntity(
-      displayName: displayName ?? "N/A",
-      category: category ?? "N/A",
-      displayIcon: displayIcon ?? "",
+      displayName: displayName ?? 'N/A',
+      category: category ?? 'N/A',
+      displayIcon: displayIcon ?? '',
       weaponStats: weaponStats?.toWeaponStatsEntity() ?? const WeaponStatsModel().toWeaponStatsEntity(),
     );
   }

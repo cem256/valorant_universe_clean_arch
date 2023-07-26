@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/map_entity.dart';
+import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
 
 part 'map_model.freezed.dart';
 part 'map_model.g.dart';
@@ -21,11 +21,11 @@ class MapModel with _$MapModel {
 extension MapModelX on MapModel {
   MapEntity toMapEntity() {
     return MapEntity(
-      displayName: displayName ?? "N/A",
-      coordinates: coordinates ?? "N/A",
-      displayIcon: displayIcon ?? "",
-      listViewIcon: listViewIcon ?? "",
-      splash: splash ?? "",
+      displayName: displayName ?? 'N/A',
+      coordinates: coordinates ?? 'N/A',
+      displayIcon: displayIcon ?? '',
+      listViewIcon: listViewIcon ?? '',
+      splash: splash ?? '',
     );
   }
 }

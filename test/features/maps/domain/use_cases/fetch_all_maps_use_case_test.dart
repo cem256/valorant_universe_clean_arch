@@ -21,8 +21,8 @@ void main() {
     mockMapEntity = List.generate(10, (index) => MockMapEntity());
   });
 
-  group("Fetch All Maps Use Case Test", () {
-    test("Should return list of map entities when there is no exception", () async {
+  group('Fetch All Maps Use Case Test', () {
+    test('Should return list of map entities when there is no exception', () async {
       when(() => mockMapRepository.fetchAllMaps()).thenAnswer((_) async => Right(mockMapEntity));
       final result = await fetchAllMapsUseCase();
 
@@ -30,7 +30,7 @@ void main() {
       expect(result, isA<Right<ApiFailure, List<MapEntity>>>());
     });
 
-    test("Should return ApiFailure when there is an exception", () async {
+    test('Should return ApiFailure when there is an exception', () async {
       when(() => mockMapRepository.fetchAllMaps()).thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
       final result = await fetchAllMapsUseCase();
 

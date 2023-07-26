@@ -21,8 +21,8 @@ void main() {
     mockWeaponEntity = List.generate(10, (index) => MockWeaponEntity());
   });
 
-  group("Fetch All Weapons Use Case Test", () {
-    test("Should return list of weapon entities when there is no exception", () async {
+  group('Fetch All Weapons Use Case Test', () {
+    test('Should return list of weapon entities when there is no exception', () async {
       when(() => mockWeaponRepository.fetchAllWeapons()).thenAnswer((_) async => Right(mockWeaponEntity));
       final result = await fetchAllWeaponsUseCase();
 
@@ -30,7 +30,7 @@ void main() {
       expect(result, isA<Right<ApiFailure, List<WeaponEntity>>>());
     });
 
-    test("Should return ApiFailure when there is an exception", () async {
+    test('Should return ApiFailure when there is an exception', () async {
       when(() => mockWeaponRepository.fetchAllWeapons())
           .thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
       final result = await fetchAllWeaponsUseCase();

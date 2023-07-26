@@ -1,7 +1,7 @@
 part of '../view/agent_details_view.dart';
 
 class _AgentAbilities extends StatelessWidget {
-  const _AgentAbilities({Key? key, required this.agent}) : super(key: key);
+  const _AgentAbilities({required this.agent});
 
   final AgentEntity agent;
 
@@ -13,8 +13,8 @@ class _AgentAbilities extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       itemCount: agent.abilities.length,
-      itemBuilder: ((context, index) {
-        final AbilityEntity ability = agent.abilities[index];
+      itemBuilder: (context, index) {
+        final ability = agent.abilities[index];
         return Row(
           children: [
             Expanded(
@@ -46,7 +46,7 @@ class _AgentAbilities extends StatelessWidget {
             ),
           ],
         );
-      }),
+      },
     );
   }
 }

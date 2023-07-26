@@ -1,5 +1,5 @@
-import '../entities/agent/agent_entity.dart';
-import '../repositories/agent_repository.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
 
 class SortAgentUseCase {
   SortAgentUseCase({required this.agentRepository});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../extensions/context_extension.dart';
+import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
 
 class ValorantText extends StatelessWidget {
-  const ValorantText({super.key, required this.text, required this.isTitle});
+  const ValorantText({required this.text, required this.isTitle, super.key});
 
   final String text;
   final bool isTitle;
@@ -13,7 +13,7 @@ class ValorantText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontFamily: "Valorant",
+        fontFamily: 'Valorant',
         fontSize: isTitle ? context.textTheme.titleLarge?.fontSize : context.textTheme.titleMedium?.fontSize,
       ),
     );

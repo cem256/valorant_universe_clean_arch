@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entities/ability/ability_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/ability/ability_entity.dart';
 
 part 'ability_model.freezed.dart';
 part 'ability_model.g.dart';
@@ -20,9 +20,9 @@ class AbilityModel with _$AbilityModel {
 extension AbilityModelX on AbilityModel {
   AbilityEntity toAbilityEntity() {
     return AbilityEntity(
-      displayName: displayName ?? "N/A",
-      description: description ?? "N/A",
-      displayIcon: displayIcon ?? "",
+      displayName: displayName ?? 'N/A',
+      description: description ?? 'N/A',
+      displayIcon: displayIcon ?? '',
     );
   }
 }

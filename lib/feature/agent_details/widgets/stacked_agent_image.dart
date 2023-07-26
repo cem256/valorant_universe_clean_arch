@@ -1,7 +1,7 @@
 part of '../view/agent_details_view.dart';
 
 class _StackedAgentImage extends StatelessWidget {
-  const _StackedAgentImage({Key? key, required this.agent}) : super(key: key);
+  const _StackedAgentImage({required this.agent});
 
   final AgentEntity agent;
 

@@ -30,17 +30,17 @@ void main() {
     );
     mockWeaponModel = List.generate(10, (index) => MockWeaponModel());
   });
-  group("Checks the device connection", () {
-    test("Device is online", () {
+  group('Checks the device connection', () {
+    test('Device is online', () {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     });
-    test("Device is offline", () {
+    test('Device is offline', () {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
     });
   });
 
-  group("Fetch weapons", () {
-    test("Should return list of weapon entities when there is no exception", () async {
+  group('Fetch weapons', () {
+    test('Should return list of weapon entities when there is no exception', () async {
       when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       when(() => mockWeaponsRemoteDataSource.fetchWeapons()).thenAnswer((_) async => mockWeaponModel);
       final result = await weaponRepository.fetchAllWeapons();
@@ -50,7 +50,7 @@ void main() {
     });
   });
 
-  test("Should return ApiFailure when there is an exception", () async {
+  test('Should return ApiFailure when there is an exception', () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockWeaponsRemoteDataSource.fetchWeapons()).thenThrow(Exception());
     final result = await weaponRepository.fetchAllWeapons();

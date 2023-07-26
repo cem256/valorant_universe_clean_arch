@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entities/role/role_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/role/role_entity.dart';
 
 part 'role_model.freezed.dart';
 part 'role_model.g.dart';
@@ -19,9 +19,9 @@ class RoleModel with _$RoleModel {
 extension RoleModelX on RoleModel {
   RoleEntity toRoleEntity() {
     return RoleEntity(
-      displayName: displayName ?? "N/A",
-      description: description ?? "N/A",
-      displayIcon: displayIcon ?? "",
+      displayName: displayName ?? 'N/A',
+      description: description ?? 'N/A',
+      displayIcon: displayIcon ?? '',
     );
   }
 }

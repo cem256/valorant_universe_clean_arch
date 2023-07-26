@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:valorant_universe_remastered/core/extensions/string_extension.dart';
-import 'package:valorant_universe_remastered/feature/agents/domain/entities/ability/ability_entity.dart';
-import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/model/ability/ability_model.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/model/role/role_model.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/ability/ability_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 
 part 'agent_model.freezed.dart';
 part 'agent_model.g.dart';

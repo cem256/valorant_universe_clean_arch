@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/failure/api_failure.dart';
-import '../entities/agent/agent_entity.dart';
-import '../repositories/agent_repository.dart';
+import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
+import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
 
 class FetchAllAgentsUseCase {
   FetchAllAgentsUseCase({required this.agentRepository});

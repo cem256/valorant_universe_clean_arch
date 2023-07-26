@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../weapon_stats/weapon_stats_entity.dart';
+import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon_stats/weapon_stats_entity.dart';
 
 part 'weapon_entity.freezed.dart';
 

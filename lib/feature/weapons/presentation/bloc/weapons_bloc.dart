@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/enums/page_status.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/use_cases/fetch_all_weapons_use_case.dart';
 

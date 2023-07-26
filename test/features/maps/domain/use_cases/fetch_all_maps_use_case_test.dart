@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/repositories/map_repository.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/use_cases/fetch_all_maps_use_case.dart';
@@ -27,15 +27,15 @@ void main() {
       final result = await fetchAllMapsUseCase();
 
       verify(() => fetchAllMapsUseCase());
-      expect(result, isA<Right<ApiFailure, List<MapEntity>>>());
+      expect(result, isA<Right<Failure, List<MapEntity>>>());
     });
 
-    test('Should return ApiFailure when there is an exception', () async {
-      when(() => mockMapRepository.fetchAllMaps()).thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
+    test('Should return Failure when there is an exception', () async {
+      when(() => mockMapRepository.fetchAllMaps()).thenAnswer((_) async => const Left(Failure.unknownFailure()));
       final result = await fetchAllMapsUseCase();
 
       verify(() => fetchAllMapsUseCase());
-      expect(result, isA<Left<ApiFailure, List<MapEntity>>>());
+      expect(result, isA<Left<Failure, List<MapEntity>>>());
     });
   });
 }

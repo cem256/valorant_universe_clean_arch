@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
 
-import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/app/errors/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/core/network/network_client.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/weapon_model.dart';
 
 class WeaponsRemoteDataSource {
-  WeaponsRemoteDataSource({required this.dio});
-  final Dio dio;
+  WeaponsRemoteDataSource({required this.networkClient});
+  final NetworkClient networkClient;
 
   Future<List<WeaponModel>> fetchWeapons() async {
     try {
-      final response = await dio.get<Map<String, dynamic>>('/weapons');
+      final response = await networkClient.get<Map<String, dynamic>>('/weapons');
       final model = response.data?['data'] as List?;
       if (model == null) {
         throw NullResponseException();

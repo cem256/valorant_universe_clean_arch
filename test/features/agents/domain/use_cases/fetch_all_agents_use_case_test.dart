@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/use_cases/fetch_all_agents_use_case.dart';
@@ -27,15 +27,15 @@ void main() {
       final result = await fetchAllAgentsUseCase();
 
       verify(() => fetchAllAgentsUseCase());
-      expect(result, isA<Right<ApiFailure, List<AgentEntity>>>());
+      expect(result, isA<Right<Failure, List<AgentEntity>>>());
     });
 
-    test('Should return ApiFailure when there is an exception', () async {
-      when(() => mockAgentRepository.fetchAllAgents()).thenAnswer((_) async => const Left(ApiFailure.unknownFailure()));
+    test('Should return Failure when there is an exception', () async {
+      when(() => mockAgentRepository.fetchAllAgents()).thenAnswer((_) async => const Left(Failure.unknownFailure()));
       final result = await fetchAllAgentsUseCase();
 
       verify(() => fetchAllAgentsUseCase());
-      expect(result, isA<Left<ApiFailure, List<AgentEntity>>>());
+      expect(result, isA<Left<Failure, List<AgentEntity>>>());
     });
   });
 }

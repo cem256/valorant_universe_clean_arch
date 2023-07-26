@@ -11,7 +11,7 @@ class _SortAgents extends StatelessWidget {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       separatorBuilder: (context, index) => SizedBox(
-        width: context.mediumValue,
+        width: context.defaultValue,
       ),
       itemCount: roles.length,
       itemBuilder: (context, index) {
@@ -20,7 +20,7 @@ class _SortAgents extends StatelessWidget {
           child: Container(
             padding: context.paddingHorizontalDefault,
             decoration: BoxDecoration(
-              borderRadius: context.defaultBorderRadius,
+              borderRadius: ThemeConstants.borderRadiusCircular,
               color: index == selectedIndex ? context.theme.focusColor : context.theme.disabledColor,
             ),
             child: Center(

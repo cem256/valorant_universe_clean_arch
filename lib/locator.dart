@@ -1,10 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-
-import 'package:valorant_universe_remastered/core/locale/locale_manager.dart';
+import 'package:valorant_universe_remastered/core/network/network_client.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
-import 'package:valorant_universe_remastered/core/network/network_manager.dart';
-import 'package:valorant_universe_remastered/core/theme/theme_manager.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/data_sources/remote/agents_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/repositories/agent_repository_imp.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
@@ -22,117 +20,114 @@ import 'package:valorant_universe_remastered/feature/weapons/domain/repositories
 import 'package:valorant_universe_remastered/feature/weapons/domain/use_cases/fetch_all_weapons_use_case.dart';
 import 'package:valorant_universe_remastered/feature/weapons/presentation/bloc/weapons_bloc.dart';
 
-// Global service locator
-final getIt = GetIt.instance;
+abstract final class Locator {
+  /// [GetIt] instance
+  static final instance = GetIt.instance;
 
-void initServices() {
-  // Features - Agents
-  // Bloc
-  getIt
-    ..registerFactory(
-      () => AgentsBloc(
-        fetchAllAgentsUseCase: getIt(),
-        sortAgentUseCase: getIt(),
-      ),
-    )
-
-    // Use cases
-    ..registerLazySingleton(
-      () => FetchAllAgentsUseCase(
-        agentRepository: getIt(),
-      ),
-    )
-    ..registerLazySingleton(
-      () => SortAgentUseCase(
-        agentRepository: getIt(),
-      ),
-    )
-
-    // Repository
-    ..registerLazySingleton<AgentRepository>(
-      () => AgentRepositoryImp(
-        agentsRemoteDataSource: getIt(),
-        networkInfo: getIt(),
-      ),
-    )
-
-    // Data sources
-    ..registerLazySingleton(
-      () => AgentsRemoteDataSource(dio: getIt<NetworkManager>().dio),
-    )
-
-    // Features - Weapons
+  static Future<void> locateServices({required String baseUrl}) async {
+    // Features - Agents
     // Bloc
-    ..registerFactory(
-      () => WeaponsBloc(
-        fetchAllWeaponsUseCase: getIt(),
-      ),
-    )
+    instance
+      ..registerFactory(
+        () => AgentsBloc(
+          fetchAllAgentsUseCase: instance(),
+          sortAgentUseCase: instance(),
+        ),
+      )
 
-    // Use cases
-    ..registerLazySingleton(
-      () => FetchAllWeaponsUseCase(
-        weaponRepository: getIt(),
-      ),
-    )
+      // Use cases
+      ..registerFactory(
+        () => FetchAllAgentsUseCase(
+          agentRepository: instance(),
+        ),
+      )
+      ..registerFactory(
+        () => SortAgentUseCase(
+          agentRepository: instance(),
+        ),
+      )
 
-    // Repository
-    ..registerLazySingleton<WeaponRepository>(
-      () => WeaponRepositoryImp(
-        weaponsRemoteDataSource: getIt(),
-        networkInfo: getIt(),
-      ),
-    )
+      // Repository
+      ..registerFactory<AgentRepository>(
+        () => AgentRepositoryImp(
+          agentsRemoteDataSource: instance(),
+          networkInfo: instance(),
+        ),
+      )
 
-    // Data sources
-    ..registerLazySingleton(
-      () => WeaponsRemoteDataSource(dio: getIt<NetworkManager>().dio),
-    )
+      // Data sources
+      ..registerFactory(
+        () => AgentsRemoteDataSource(networkClient: instance()),
+      )
 
-    // Features - Maps
-    // Bloc
-    ..registerFactory(
-      () => MapsBloc(
-        fetchAllMapsUseCase: getIt(),
-      ),
-    )
+      // Features - Weapons
+      // Bloc
+      ..registerFactory(
+        () => WeaponsBloc(
+          fetchAllWeaponsUseCase: instance(),
+        ),
+      )
 
-    // Use cases
-    ..registerLazySingleton(
-      () => FetchAllMapsUseCase(
-        mapRepository: getIt(),
-      ),
-    )
+      // Use cases
+      ..registerFactory(
+        () => FetchAllWeaponsUseCase(
+          weaponRepository: instance(),
+        ),
+      )
 
-    // Repository
-    ..registerLazySingleton<MapRepository>(
-      () => MapRepositoryImp(
-        mapsRemoteDataSource: getIt(),
-        networkInfo: getIt(),
-      ),
-    )
+      // Repository
+      ..registerFactory<WeaponRepository>(
+        () => WeaponRepositoryImp(
+          weaponsRemoteDataSource: instance(),
+          networkInfo: instance(),
+        ),
+      )
 
-    // Data sources
-    ..registerLazySingleton(
-      () => MapsRemoteDataSource(dio: getIt<NetworkManager>().dio),
-    )
+      // Data sources
+      ..registerFactory(
+        () => WeaponsRemoteDataSource(networkClient: instance()),
+      )
 
-    // Core
-    ..registerLazySingleton(
-      InternetConnectionChecker.new,
-    )
-    ..registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImp(
-        connectionChecker: getIt(),
-      ),
-    )
-    ..registerLazySingleton(
-      NetworkManager.new,
-    )
-    ..registerLazySingleton(
-      ThemeManager.new,
-    )
-    ..registerLazySingleton(
-      LocaleManager.new,
-    );
+      // Features - Maps
+      // Bloc
+      ..registerFactory(
+        () => MapsBloc(
+          fetchAllMapsUseCase: instance(),
+        ),
+      )
+
+      // Use cases
+      ..registerFactory(
+        () => FetchAllMapsUseCase(
+          mapRepository: instance(),
+        ),
+      )
+
+      // Repository
+      ..registerFactory<MapRepository>(
+        () => MapRepositoryImp(
+          mapsRemoteDataSource: instance(),
+          networkInfo: instance(),
+        ),
+      )
+
+      // Data sources
+      ..registerFactory(
+        () => MapsRemoteDataSource(networkClient: instance()),
+      )
+
+      // Core
+      ..registerLazySingleton(
+        InternetConnectionChecker.new,
+      )
+      ..registerLazySingleton<NetworkInfo>(
+        () => NetworkInfoImp(
+          connectionChecker: instance(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => NetworkClient(dio: instance(), baseUrl: baseUrl),
+      )
+      ..registerFactory(Dio.new);
+  }
 }

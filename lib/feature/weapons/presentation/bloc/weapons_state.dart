@@ -5,6 +5,6 @@ class WeaponsState with _$WeaponsState {
   const factory WeaponsState({
     @Default(PageStatus.initial) PageStatus status,
     @Default([]) List<WeaponEntity> weapons,
-    ApiFailure? failure,
+    Failure? failure,
   }) = _WeaponsState;
 }

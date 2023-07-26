@@ -10,7 +10,7 @@ class _MapListItem extends StatelessWidget {
     return InkWell(
       onTap: () => context.router.push(MapDetailRoute(map: map)),
       child: ClipRRect(
-        borderRadius: context.defaultBorderRadius,
+        borderRadius: ThemeConstants.borderRadiusCircular,
         child: Stack(
           alignment: Alignment.center,
           children: [

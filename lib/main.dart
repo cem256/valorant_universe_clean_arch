@@ -2,26 +2,28 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:valorant_universe_remastered/core/constants/strings.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_manager.dart';
-import 'package:valorant_universe_remastered/core/router/app_router.dart';
-import 'package:valorant_universe_remastered/core/theme/theme_manager.dart';
-import 'package:valorant_universe_remastered/core/utility/observers/simple_bloc_observer.dart';
+import 'package:valorant_universe_remastered/app/constants/strings.dart';
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.dart';
+import 'package:valorant_universe_remastered/app/router/app_router.dart';
+import 'package:valorant_universe_remastered/app/router/custom_route_observer.dart';
+import 'package:valorant_universe_remastered/app/theme/app_theme.dart';
+import 'package:valorant_universe_remastered/core/utility/observers/custom_bloc_observer.dart';
 import 'package:valorant_universe_remastered/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  initServices();
+  await Locator.locateServices(baseUrl: Strings.baseUrl);
   await EasyLocalization.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  Bloc.observer = SimpleBlocObserver();
+  Bloc.observer = CustomBlocObserver();
+
   runApp(
     EasyLocalization(
-      supportedLocales: getIt<LocaleManager>().supportedLocales,
-      path: getIt<LocaleManager>().path,
-      fallbackLocale: getIt<LocaleManager>().en,
+      supportedLocales: AppL10n.supportedLocales,
+      path: AppL10n.path,
+      fallbackLocale: AppL10n.en,
       child: ValorantUniverseRemastered(),
     ),
   );
@@ -45,11 +47,12 @@ class ValorantUniverseRemastered extends StatelessWidget {
 
       //theme
       themeMode: ThemeMode.dark,
-      darkTheme: getIt<ThemeManager>().darkTheme,
+      darkTheme: AppTheme().theme,
 
-      // routing
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      //routing
+      routerConfig: _appRouter.config(
+        navigatorObservers: () => [CustomRouteObserver()],
+      ),
     );
   }
 }

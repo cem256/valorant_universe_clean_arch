@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/enums/page_status.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/use_cases/fetch_all_maps_use_case.dart';
 import 'package:valorant_universe_remastered/feature/maps/presentation/bloc/maps_bloc.dart';
@@ -41,7 +41,7 @@ void main() {
       setUp: () {
         when(() => mockFetchAllMapsUseCase()).thenAnswer(
           (_) async => const Left(
-            ApiFailure.unknownFailure(),
+            Failure.unknownFailure(),
           ),
         );
       },
@@ -51,7 +51,7 @@ void main() {
         const MapsState(status: PageStatus.loading),
         const MapsState(
           status: PageStatus.failure,
-          failure: ApiFailure.unknownFailure(),
+          failure: Failure.unknownFailure(),
         ),
       ],
     );

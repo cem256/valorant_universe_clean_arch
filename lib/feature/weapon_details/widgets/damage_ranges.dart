@@ -9,7 +9,7 @@ class _DamageRanges extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       separatorBuilder: (context, index) => SizedBox(
-        height: context.mediumValue,
+        height: context.defaultValue,
       ),
       itemCount: weaponStats.damageRanges.length,
       itemBuilder: (context, index) {

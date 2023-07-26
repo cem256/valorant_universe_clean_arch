@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/data_sources/remote/agents_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/model/agent/agent_model.dart';
@@ -50,17 +50,17 @@ void main() {
       final result = await agentRepository.fetchAllAgents();
 
       verify(() => mockAgentsRemoteDataSource.fetchAgents());
-      expect(result, isA<Right<ApiFailure, List<AgentEntity>>>());
+      expect(result, isA<Right<Failure, List<AgentEntity>>>());
     });
   });
 
-  test('Should return ApiFailure when there is an exception', () async {
+  test('Should return Failure when there is an exception', () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockAgentsRemoteDataSource.fetchAgents()).thenThrow(Exception());
     final result = await agentRepository.fetchAllAgents();
 
     verify(() => mockAgentsRemoteDataSource.fetchAgents());
-    expect(result, isA<Left<ApiFailure, List<AgentEntity>>>());
+    expect(result, isA<Left<Failure, List<AgentEntity>>>());
   });
 
   test('Should return list of agent enitities length of 10 when index equals to 0', () {

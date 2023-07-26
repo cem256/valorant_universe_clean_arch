@@ -13,7 +13,7 @@ class _AgentsGridCard extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: context.defaultBorderRadius,
+          borderRadius: ThemeConstants.borderRadiusCircular,
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,

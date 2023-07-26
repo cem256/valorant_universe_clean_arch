@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
 import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
 
 class ValorantErrorText extends StatelessWidget {
   const ValorantErrorText({required this.failure, super.key});
 
-  final ApiFailure failure;
+  final Failure failure;
 
   @override
   Widget build(BuildContext context) {

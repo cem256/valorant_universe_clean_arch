@@ -7,6 +7,6 @@ class AgentsState with _$AgentsState {
     @Default([]) List<AgentEntity> agents,
     @Default([]) List<AgentEntity> allAgents,
     @Default(0) int selectedIndex,
-    ApiFailure? failure,
+    Failure? failure,
   }) = _AgentsState;
 }

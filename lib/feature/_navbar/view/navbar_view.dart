@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
+import 'package:valorant_universe_remastered/app/router/app_router.gr.dart';
+import 'package:valorant_universe_remastered/app/theme/theme_constants.dart';
+import 'package:valorant_universe_remastered/app/widgets/icons/custom_icons.dart';
 import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
-import 'package:valorant_universe_remastered/core/router/app_router.gr.dart';
-import 'package:valorant_universe_remastered/core/widgets/icons/custom_icons.dart';
 
 @RoutePage()
 class NavbarView extends StatelessWidget {
@@ -23,11 +23,11 @@ class NavbarView extends StatelessWidget {
       bottomNavigationBuilder: (_, tabsRouter) {
         return SalomonBottomBar(
           itemShape: RoundedRectangleBorder(
-            borderRadius: context.defaultBorderRadius,
+            borderRadius: ThemeConstants.borderRadiusCircular,
           ),
-          selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
-          unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-          selectedColorOpacity: 0.4,
+          selectedItemColor: context.theme.bottomNavigationBarTheme.selectedItemColor,
+          unselectedItemColor: context.theme.bottomNavigationBarTheme.unselectedItemColor,
+          selectedColorOpacity: 0.5,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: [

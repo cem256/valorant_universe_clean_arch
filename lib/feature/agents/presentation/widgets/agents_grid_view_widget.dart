@@ -9,8 +9,8 @@ class _AgentsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: context.mediumValue,
-        crossAxisSpacing: context.mediumValue,
+        mainAxisSpacing: context.defaultValue,
+        crossAxisSpacing: context.defaultValue,
         childAspectRatio: 3 / 4,
         crossAxisCount: 2,
       ),

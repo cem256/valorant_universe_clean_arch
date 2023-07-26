@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 
 import 'package:valorant_universe_remastered/feature/maps/data/data_sources/remote/maps_remote_data_source.dart';
@@ -47,16 +47,16 @@ void main() {
       final result = await mapRepository.fetchAllMaps();
 
       verify(() => mockMapsRemoteDataSource.fetchMaps());
-      expect(result, isA<Right<ApiFailure, List<MapEntity>>>());
+      expect(result, isA<Right<Failure, List<MapEntity>>>());
     });
   });
 
-  test('should return ApiFailure when there is an exception', () async {
+  test('should return Failure when there is an exception', () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockMapsRemoteDataSource.fetchMaps()).thenThrow(Exception());
     final result = await mapRepository.fetchAllMaps();
 
     verify(() => mockMapsRemoteDataSource.fetchMaps());
-    expect(result, isA<Left<ApiFailure, List<MapEntity>>>());
+    expect(result, isA<Left<Failure, List<MapEntity>>>());
   });
 }

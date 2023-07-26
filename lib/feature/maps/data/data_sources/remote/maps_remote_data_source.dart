@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
 
-import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/app/errors/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/core/network/network_client.dart';
 import 'package:valorant_universe_remastered/feature/maps/data/model/map_model.dart';
 
 class MapsRemoteDataSource {
-  MapsRemoteDataSource({required this.dio});
-  final Dio dio;
+  MapsRemoteDataSource({required this.networkClient});
+  final NetworkClient networkClient;
 
   Future<List<MapModel>> fetchMaps() async {
     try {
-      final response = await dio.get<Map<String, dynamic>>('/maps');
+      final response = await networkClient.get<Map<String, dynamic>>('/maps');
       final model = response.data?['data'] as List?;
       if (model == null) {
         throw NullResponseException();

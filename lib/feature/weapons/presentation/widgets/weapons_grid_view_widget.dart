@@ -11,8 +11,8 @@ class _WeaponsGridView extends StatelessWidget {
       padding: context.paddingHorizontalDefault,
       itemCount: weapons.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: context.mediumValue,
-        crossAxisSpacing: context.mediumValue,
+        mainAxisSpacing: context.defaultValue,
+        crossAxisSpacing: context.defaultValue,
         crossAxisCount: 2,
       ),
       itemBuilder: (context, index) {

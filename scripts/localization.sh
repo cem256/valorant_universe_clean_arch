@@ -1,1 +1,1 @@
-flutter pub run easy_localization:generate  --output-dir lib/core/locale/ --format keys -o locale_keys.g.dart --source-dir assets/translations
+dart run easy_localization:generate  -O lib/app/l10n -f keys -o app_l10n.g.dart --source-dir assets/translations

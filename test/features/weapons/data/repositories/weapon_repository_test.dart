@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/data_sources/remote/weapons_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/weapon_model.dart';
@@ -46,16 +46,16 @@ void main() {
       final result = await weaponRepository.fetchAllWeapons();
 
       verify(() => mockWeaponsRemoteDataSource.fetchWeapons());
-      expect(result, isA<Right<ApiFailure, List<WeaponEntity>>>());
+      expect(result, isA<Right<Failure, List<WeaponEntity>>>());
     });
   });
 
-  test('Should return ApiFailure when there is an exception', () async {
+  test('Should return Failure when there is an exception', () async {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(() => mockWeaponsRemoteDataSource.fetchWeapons()).thenThrow(Exception());
     final result = await weaponRepository.fetchAllWeapons();
 
     verify(() => mockWeaponsRemoteDataSource.fetchWeapons());
-    expect(result, isA<Left<ApiFailure, List<WeaponEntity>>>());
+    expect(result, isA<Left<Failure, List<WeaponEntity>>>());
   });
 }

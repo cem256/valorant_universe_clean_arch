@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
+import 'package:valorant_universe_remastered/app/widgets/image/custom_cached_network_image.dart';
+import 'package:valorant_universe_remastered/app/widgets/text/valorant_text.dart';
 import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
-import 'package:valorant_universe_remastered/core/widgets/image/custom_cached_network_image.dart';
-import 'package:valorant_universe_remastered/core/widgets/text/valorant_text.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 
 part '../widgets/agent_abilities.dart';
@@ -36,14 +35,14 @@ class AgentDetailsView extends StatelessWidget {
                     style: context.textTheme.bodyLarge,
                   ),
                   SizedBox(
-                    height: context.mediumValue,
+                    height: context.defaultValue,
                   ),
                   ValorantText(
                     isTitle: true,
                     text: LocaleKeys.abilities.tr(),
                   ),
                   SizedBox(
-                    height: context.mediumValue,
+                    height: context.defaultValue,
                   ),
                   _AgentAbilities(agent: agent),
                 ],

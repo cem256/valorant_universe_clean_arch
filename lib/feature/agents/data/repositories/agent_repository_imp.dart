@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
+import 'package:valorant_universe_remastered/app/errors/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/data_sources/remote/agents_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/agents/data/model/agent/agent_model.dart';
@@ -17,21 +17,21 @@ class AgentRepositoryImp implements AgentRepository {
   final NetworkInfo networkInfo;
 
   @override
-  Future<Either<ApiFailure, List<AgentEntity>>> fetchAllAgents() async {
+  Future<Either<Failure, List<AgentEntity>>> fetchAllAgents() async {
     if (await networkInfo.isConnected) {
       try {
         final response = await agentsRemoteDataSource.fetchAgents();
 
         return right(response.map((e) => e.toAgentEntity()).toList());
       } on DioException catch (e) {
-        return left(ApiFailure.dioFailure(e.message));
+        return left(Failure.dioFailure(e.message));
       } on NullResponseException catch (_) {
-        return left(const ApiFailure.nullResponseFailure());
+        return left(const Failure.nullResponseFailure());
       } catch (_) {
-        return left(const ApiFailure.unknownFailure());
+        return left(const Failure.unknownFailure());
       }
     } else {
-      return left(const ApiFailure.noConnectionFailure());
+      return left(const Failure.noConnectionFailure());
     }
   }
 

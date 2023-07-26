@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
+import 'package:valorant_universe_remastered/app/theme/theme_constants.dart';
+import 'package:valorant_universe_remastered/app/widgets/appbar/valorant_app_bar.dart';
+import 'package:valorant_universe_remastered/app/widgets/image/custom_cached_network_image.dart';
+import 'package:valorant_universe_remastered/app/widgets/text/valorant_text.dart';
 import 'package:valorant_universe_remastered/core/extensions/context_extension.dart';
-import 'package:valorant_universe_remastered/core/locale/locale_keys.g.dart';
-import 'package:valorant_universe_remastered/core/widgets/appbar/valorant_app_bar.dart';
-import 'package:valorant_universe_remastered/core/widgets/image/custom_cached_network_image.dart';
-import 'package:valorant_universe_remastered/core/widgets/text/valorant_text.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon_stats/weapon_stats_entity.dart';
 
@@ -35,14 +35,14 @@ class WeaponDetailsView extends StatelessWidget {
               child: _WeaponDetailCard(weapon: weapon),
             ),
             SizedBox(
-              height: context.mediumValue,
+              height: context.defaultValue,
             ),
             ValorantText(
               isTitle: true,
               text: LocaleKeys.weapon_detail_weapon_stats.tr(),
             ),
             SizedBox(
-              height: context.mediumValue,
+              height: context.defaultValue,
             ),
             Expanded(
               flex: 3,
@@ -67,7 +67,7 @@ class WeaponDetailsView extends StatelessWidget {
                   ),
                   const Divider(),
                   SizedBox(
-                    height: context.mediumValue,
+                    height: context.defaultValue,
                   ),
                   Visibility(
                     visible: weapon.weaponStats.damageRanges.isNotEmpty,
@@ -77,7 +77,7 @@ class WeaponDetailsView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: context.mediumValue,
+                    height: context.defaultValue,
                   ),
                   Expanded(
                     child: _DamageRanges(weaponStats: weapon.weaponStats),

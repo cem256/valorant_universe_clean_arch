@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/enums/page_status.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/use_cases/fetch_all_agents_use_case.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/use_cases/sort_agents_use_case.dart';
@@ -55,7 +55,7 @@ void main() {
       'Fetch all agents error case test',
       setUp: () {
         when(() => mockFetchAllAgentsUseCase()).thenAnswer(
-          (_) async => const Left(ApiFailure.unknownFailure()),
+          (_) async => const Left(Failure.unknownFailure()),
         );
       },
       build: () => agentsBloc,
@@ -64,7 +64,7 @@ void main() {
         const AgentsState(status: PageStatus.loading),
         const AgentsState(
           status: PageStatus.failure,
-          failure: ApiFailure.unknownFailure(),
+          failure: Failure.unknownFailure(),
         ),
       ],
     );

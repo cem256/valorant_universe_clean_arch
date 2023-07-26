@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:valorant_universe_remastered/core/exceptions/exceptions.dart';
-import 'package:valorant_universe_remastered/core/failure/api_failure.dart';
+import 'package:valorant_universe_remastered/app/errors/exceptions/exceptions.dart';
+import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/core/network/network_info.dart';
 import 'package:valorant_universe_remastered/feature/maps/data/data_sources/remote/maps_remote_data_source.dart';
 import 'package:valorant_universe_remastered/feature/maps/data/model/map_model.dart';
@@ -15,21 +15,21 @@ class MapRepositoryImp implements MapRepository {
   final NetworkInfo networkInfo;
 
   @override
-  Future<Either<ApiFailure, List<MapEntity>>> fetchAllMaps() async {
+  Future<Either<Failure, List<MapEntity>>> fetchAllMaps() async {
     if (await networkInfo.isConnected) {
       try {
         final response = await mapsRemoteDataSource.fetchMaps();
 
         return right(response.map((e) => e.toMapEntity()).toList());
       } on DioException catch (e) {
-        return left(ApiFailure.dioFailure(e.message));
+        return left(Failure.dioFailure(e.message));
       } on NullResponseException catch (_) {
-        return left(const ApiFailure.nullResponseFailure());
+        return left(const Failure.nullResponseFailure());
       } catch (_) {
-        return left(const ApiFailure.unknownFailure());
+        return left(const Failure.unknownFailure());
       }
     } else {
-      return left(const ApiFailure.noConnectionFailure());
+      return left(const Failure.noConnectionFailure());
     }
   }
 }

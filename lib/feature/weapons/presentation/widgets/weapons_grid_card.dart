@@ -15,7 +15,7 @@ class _WeaponsGridCard extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: context.defaultBorderRadius,
+          borderRadius: ThemeConstants.borderRadiusCircular,
           color: context.theme.disabledColor,
         ),
         child: Column(

@@ -1,6 +1,6 @@
 # Valorant Universe Clean Architecture
 
-A simple app to demonstrate Clean Architecture
+Provides information about agents, maps and weapons in the game VALORANT. Built with Clean Architecture, Flutter Bloc and Valorant-Api.
 
 ## Preview
 
@@ -30,12 +30,13 @@ A simple app to demonstrate Clean Architecture
 </table>
 
 ## Built With
+
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
 - [Valorant-Api](https://valorant-api.com/)
 
-
 ## Packages
+
 - State Management
   - [Bloc](https://pub.dev/packages/flutter_bloc)
 - Dart Data Class Generation
@@ -45,6 +46,7 @@ A simple app to demonstrate Clean Architecture
   - [Dartz](https://pub.dev/packages/dartz)
 - Network
   - [Dio](https://pub.dev/packages/dio)
+  - [DioSmartRetry](https://pub.dev/packages/dio_smart_retry)
   - [PrettyDioLogger](https://pub.dev/packages/pretty_dio_logger)
   - [InternetConnectionChecker](https://pub.dev/packages/internet_connection_checker)
 - Navigation
@@ -61,32 +63,31 @@ A simple app to demonstrate Clean Architecture
   - [Mocktail](https://pub.dev/packages/mocktail)
   - [BlocTest](https://pub.dev/packages/bloc_test)
 
-
-
 ### Run this project
 
 ##### Clone this repository
+
 ```sh
 git clone https://github.com/cem256/valorant_universe_clean_arch
 ```
 
 ##### Go to the project directory
+
 ```sh
 cd valorant_universe_clean_arch
 ```
 
 ##### Get all the packages
+
 ```sh
 flutter pub get
 ```
 
 ##### Open the project folder and execute these scripts in the terminal
+
 ```sh
-sh scripst/build_runner.sh
+sh scripts/build_runner.sh
 sh scripts/localization.sh
 ```
 
 ##### Run the project
-
-
-

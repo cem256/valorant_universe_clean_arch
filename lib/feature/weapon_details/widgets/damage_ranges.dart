@@ -8,38 +8,40 @@ class _DamageRanges extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: weaponStats.damageRanges.length,
       separatorBuilder: (context, index) => SizedBox(
         height: context.defaultValue,
       ),
-      itemCount: weaponStats.damageRanges.length,
       itemBuilder: (context, index) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _WeaponInfoTile(
-              leftString: LocaleKeys.weapon_detail_damage_ranges_meters.tr(
+              leading: LocaleKeys.weapon_detail_damage_ranges_meters.tr(
                 namedArgs: {
                   'start': weaponStats.damageRanges[index].rangeStartMeters,
                   'end': weaponStats.damageRanges[index].rangeEndMeters
                 },
               ),
-              rightString: '',
+              trailing: '',
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: LocaleKeys.weapon_detail_head_damage.tr(),
-              rightString: weaponStats.damageRanges[index].headDamage,
+              leading: LocaleKeys.weapon_detail_head_damage.tr(),
+              trailing: weaponStats.damageRanges[index].headDamage,
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: LocaleKeys.weapon_detail_body_damage.tr(),
-              rightString: weaponStats.damageRanges[index].bodyDamage,
+              leading: LocaleKeys.weapon_detail_body_damage.tr(),
+              trailing: weaponStats.damageRanges[index].bodyDamage,
             ),
             const Divider(),
             _WeaponInfoTile(
-              leftString: LocaleKeys.weapon_detail_leg_damage.tr(),
-              rightString: weaponStats.damageRanges[index].legDamage,
+              leading: LocaleKeys.weapon_detail_leg_damage.tr(),
+              trailing: weaponStats.damageRanges[index].legDamage,
             ),
             const Divider(),
           ],

@@ -18,11 +18,11 @@ class _StackedAgentImage extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            right: 0,
-            bottom: 0,
+          Align(
+            alignment: Alignment.bottomCenter,
             child: SizedBox(
               height: context.veryHighValue4x,
+              width: context.width,
               child: Hero(
                 tag: agent.displayName,
                 child: CustomCachedNetworkImage(

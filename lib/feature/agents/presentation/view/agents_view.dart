@@ -6,7 +6,7 @@ import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
 import 'package:valorant_universe_remastered/app/router/app_router.gr.dart';
 import 'package:valorant_universe_remastered/app/theme/theme_constants.dart';
-import 'package:valorant_universe_remastered/app/widgets/animation/loading_animation.dart';
+import 'package:valorant_universe_remastered/app/widgets/animation/custom_loading_animation.dart';
 import 'package:valorant_universe_remastered/app/widgets/appbar/valorant_app_bar.dart';
 import 'package:valorant_universe_remastered/app/widgets/error/valorant_error_widget.dart';
 import 'package:valorant_universe_remastered/app/widgets/image/custom_cached_network_image.dart';
@@ -44,37 +44,35 @@ class _AgentsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AgentsBloc, AgentsState>(
       builder: (context, state) {
-        if (state.status == PageStatus.initial || state.status == PageStatus.loading) {
-          return const Center(
-            child: LoadingAnimation(),
-          );
-        } else if (state.status == PageStatus.success) {
-          return Padding(
-            padding: context.paddingHorizontalDefault,
-            child: Column(
-              children: [
-                Expanded(
-                  child: _SortAgents(selectedIndex: state.selectedIndex),
-                ),
-                SizedBox(
-                  height: context.defaultValue,
-                ),
-                Expanded(
-                  flex: 14,
-                  child: _AgentsGridView(agents: state.agents),
-                ),
-              ],
+        return switch (state.status) {
+          PageStatus.initial || PageStatus.loading => const Center(
+              child: CustomLoadingAnimation(),
             ),
-          );
-        } else {
-          return Padding(
-            padding: context.paddingAllDefault,
-            child: ValorantErrorWidget(
-              failure: state.failure ?? const Failure.unknownFailure(),
-              onPressed: () => context.read<AgentsBloc>().add(const AgentsFetched()),
+          PageStatus.failure => Padding(
+              padding: context.paddingAllDefault,
+              child: ValorantErrorWidget(
+                failure: state.failure ?? const Failure.unknownFailure(),
+                onPressed: () => context.read<AgentsBloc>().add(const AgentsFetched()),
+              ),
             ),
-          );
-        }
+          PageStatus.success => Padding(
+              padding: context.paddingHorizontalDefault,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: _SortAgents(selectedIndex: state.selectedIndex),
+                  ),
+                  SizedBox(
+                    height: context.defaultValue,
+                  ),
+                  Expanded(
+                    flex: 14,
+                    child: _AgentsGridView(agents: state.agents),
+                  ),
+                ],
+              ),
+            ),
+        };
       },
     );
   }

@@ -17,5 +17,8 @@ final class AppTheme {
       selectedItemColor: AppColors.red,
       unselectedItemColor: AppColors.grey,
     ),
+    dividerTheme: const DividerThemeData(
+      color: AppColors.grey,
+    ),
   );
 }

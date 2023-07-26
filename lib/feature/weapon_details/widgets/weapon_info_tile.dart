@@ -2,12 +2,12 @@ part of '../view/weapon_details_view.dart';
 
 class _WeaponInfoTile extends StatelessWidget {
   const _WeaponInfoTile({
-    required this.leftString,
-    required this.rightString,
+    required this.leading,
+    required this.trailing,
   });
 
-  final String leftString;
-  final String rightString;
+  final String leading;
+  final String trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,11 @@ class _WeaponInfoTile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          leftString,
+          leading,
           style: context.textTheme.bodyLarge,
         ),
         Text(
-          rightString,
+          trailing,
           style: context.textTheme.bodyLarge,
         ),
       ],

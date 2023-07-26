@@ -27,7 +27,6 @@ class NavbarView extends StatelessWidget {
           ),
           selectedItemColor: context.theme.bottomNavigationBarTheme.selectedItemColor,
           unselectedItemColor: context.theme.bottomNavigationBarTheme.unselectedItemColor,
-          selectedColorOpacity: 0.5,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
           items: [

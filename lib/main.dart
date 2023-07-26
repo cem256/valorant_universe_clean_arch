@@ -14,9 +14,11 @@ import 'package:valorant_universe_remastered/locator.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Locator.locateServices(baseUrl: Env.baseUrl);
-  await EasyLocalization.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Future.wait([
+    EasyLocalization.ensureInitialized(),
+    Locator.locateServices(baseUrl: Env.baseUrl),
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
+  ]);
 
   Bloc.observer = CustomBlocObserver();
 

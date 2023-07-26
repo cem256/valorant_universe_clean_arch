@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class CustomIcons {
-  CustomIcons._();
-
+abstract final class CustomIcons {
   static const _kFontFam = 'CustomIcons';
 
   static const IconData agent = IconData(0xe800, fontFamily: _kFontFam);

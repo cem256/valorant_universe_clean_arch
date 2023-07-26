@@ -6,7 +6,7 @@ import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
 import 'package:valorant_universe_remastered/app/router/app_router.gr.dart';
 import 'package:valorant_universe_remastered/app/theme/theme_constants.dart';
-import 'package:valorant_universe_remastered/app/widgets/animation/loading_animation.dart';
+import 'package:valorant_universe_remastered/app/widgets/animation/custom_loading_animation.dart';
 import 'package:valorant_universe_remastered/app/widgets/appbar/valorant_app_bar.dart';
 import 'package:valorant_universe_remastered/app/widgets/error/valorant_error_widget.dart';
 import 'package:valorant_universe_remastered/app/widgets/image/custom_cached_network_image.dart';
@@ -42,15 +42,19 @@ class _MapsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MapsBloc, MapsState>(
       builder: (context, state) {
-        if (state.status == PageStatus.initial || state.status == PageStatus.loading) {
-          return const Center(
-            child: LoadingAnimation(),
-          );
-        } else if (state.status == PageStatus.success) {
-          final maps = state.maps;
-          return Padding(
-            padding: context.paddingHorizontalDefault,
-            child: Center(
+        return switch (state.status) {
+          PageStatus.initial || PageStatus.loading => const Center(
+              child: CustomLoadingAnimation(),
+            ),
+          PageStatus.failure => Padding(
+              padding: context.paddingAllDefault,
+              child: ValorantErrorWidget(
+                failure: state.failure ?? const Failure.unknownFailure(),
+                onPressed: () => context.read<MapsBloc>().add(const MapsEvent.mapsFetched()),
+              ),
+            ),
+          PageStatus.success => Padding(
+              padding: context.paddingHorizontalDefault,
               child: Column(
                 children: [
                   Expanded(
@@ -58,26 +62,16 @@ class _MapsViewBody extends StatelessWidget {
                       separatorBuilder: (context, index) => SizedBox(
                         height: context.defaultValue,
                       ),
-                      itemCount: maps.length,
+                      itemCount: state.maps.length,
                       itemBuilder: (context, index) {
-                        final map = maps[index];
-                        return _MapListItem(map: map);
+                        return _MapListItem(map: state.maps[index]);
                       },
                     ),
                   ),
                 ],
               ),
             ),
-          );
-        } else {
-          return Padding(
-            padding: context.paddingAllDefault,
-            child: ValorantErrorWidget(
-              failure: state.failure ?? const Failure.unknownFailure(),
-              onPressed: () => context.read<MapsBloc>().add(const MapsFetched()),
-            ),
-          );
-        }
+        };
       },
     );
   }

@@ -8,6 +8,7 @@ class _WeaponDetailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: context.veryHighValue2x,
       decoration: BoxDecoration(
         borderRadius: ThemeConstants.borderRadiusCircular,
         color: context.theme.disabledColor,

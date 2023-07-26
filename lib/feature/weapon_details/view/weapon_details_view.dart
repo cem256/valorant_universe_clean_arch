@@ -28,41 +28,38 @@ class WeaponDetailsView extends StatelessWidget {
       ),
       body: Padding(
         padding: context.paddingHorizontalDefault,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: _WeaponDetailCard(weapon: weapon),
-            ),
-            SizedBox(
-              height: context.defaultValue,
-            ),
-            ValorantText(
-              isTitle: true,
-              text: LocaleKeys.weapon_detail_weapon_stats.tr(),
-            ),
-            SizedBox(
-              height: context.defaultValue,
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _WeaponDetailCard(weapon: weapon),
+              SizedBox(
+                height: context.defaultValue,
+              ),
+              ValorantText(
+                isTitle: true,
+                text: LocaleKeys.weapon_detail_weapon_stats.tr(),
+              ),
+              SizedBox(
+                height: context.defaultValue,
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _WeaponInfoTile(
-                    leftString: LocaleKeys.weapon_detail_magazine_size.tr(),
-                    rightString: weapon.weaponStats.magazineSize,
+                    leading: LocaleKeys.weapon_detail_magazine_size.tr(),
+                    trailing: weapon.weaponStats.magazineSize,
                   ),
                   const Divider(),
                   _WeaponInfoTile(
-                    leftString: LocaleKeys.weapon_detail_reload_time.tr(),
-                    rightString: LocaleKeys.weapon_detail_reload_time_seconds
+                    leading: LocaleKeys.weapon_detail_reload_time.tr(),
+                    trailing: LocaleKeys.weapon_detail_reload_time_seconds
                         .tr(namedArgs: {'value': weapon.weaponStats.reloadTimeSeconds}),
                   ),
                   const Divider(),
                   _WeaponInfoTile(
-                    leftString: LocaleKeys.weapon_detail_fire_rate.tr(),
-                    rightString: LocaleKeys.weapon_detail_fire_rate_seconds
+                    leading: LocaleKeys.weapon_detail_fire_rate.tr(),
+                    trailing: LocaleKeys.weapon_detail_fire_rate_seconds
                         .tr(namedArgs: {'value': weapon.weaponStats.fireRate}),
                   ),
                   const Divider(),
@@ -79,13 +76,11 @@ class WeaponDetailsView extends StatelessWidget {
                   SizedBox(
                     height: context.defaultValue,
                   ),
-                  Expanded(
-                    child: _DamageRanges(weaponStats: weapon.weaponStats),
-                  )
+                  _DamageRanges(weaponStats: weapon.weaponStats)
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

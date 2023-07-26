@@ -8,7 +8,7 @@ import 'package:valorant_universe_remastered/feature/weapons/data/model/weapon/w
 import 'package:valorant_universe_remastered/feature/weapons/domain/entities/weapon/weapon_entity.dart';
 import 'package:valorant_universe_remastered/feature/weapons/domain/repositories/weapon_repository.dart';
 
-class WeaponRepositoryImp implements WeaponRepository {
+final class WeaponRepositoryImp implements WeaponRepository {
   WeaponRepositoryImp({
     required this.weaponsRemoteDataSource,
     required this.networkInfo,

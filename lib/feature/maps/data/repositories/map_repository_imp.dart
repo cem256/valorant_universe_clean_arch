@@ -8,7 +8,7 @@ import 'package:valorant_universe_remastered/feature/maps/data/model/map_model.d
 import 'package:valorant_universe_remastered/feature/maps/domain/entities/map_entity.dart';
 import 'package:valorant_universe_remastered/feature/maps/domain/repositories/map_repository.dart';
 
-class MapRepositoryImp implements MapRepository {
+final class MapRepositoryImp implements MapRepository {
   MapRepositoryImp({required this.mapsRemoteDataSource, required this.networkInfo});
 
   final MapsRemoteDataSource mapsRemoteDataSource;

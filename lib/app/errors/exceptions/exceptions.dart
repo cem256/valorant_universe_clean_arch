@@ -1,3 +1,3 @@
-class UnknownException implements Exception {}
+final class UnknownException implements Exception {}
 
-class NullResponseException implements Exception {}
+final class NullResponseException implements Exception {}

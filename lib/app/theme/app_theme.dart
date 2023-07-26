@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_universe_remastered/app/theme/app_colors.dart';
 
-class AppTheme {
+final class AppTheme {
   final ThemeData theme = ThemeData.dark().copyWith(
     typography: Typography.material2021(),
     scaffoldBackgroundColor: AppColors.black,

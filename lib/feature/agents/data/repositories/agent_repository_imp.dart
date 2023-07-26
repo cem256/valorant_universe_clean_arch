@@ -10,7 +10,7 @@ import 'package:valorant_universe_remastered/feature/agents/data/model/agent/age
 import 'package:valorant_universe_remastered/feature/agents/domain/entities/agent/agent_entity.dart';
 import 'package:valorant_universe_remastered/feature/agents/domain/repositories/agent_repository.dart';
 
-class AgentRepositoryImp implements AgentRepository {
+final class AgentRepositoryImp implements AgentRepository {
   AgentRepositoryImp({required this.agentsRemoteDataSource, required this.networkInfo});
 
   final AgentsRemoteDataSource agentsRemoteDataSource;

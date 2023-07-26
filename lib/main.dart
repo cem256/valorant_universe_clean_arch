@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valorant_universe_remastered/app/constants/string_constants.dart';
+import 'package:valorant_universe_remastered/app/env/env.dart';
 import 'package:valorant_universe_remastered/app/l10n/app_l10n.dart';
 import 'package:valorant_universe_remastered/app/router/app_router.dart';
 import 'package:valorant_universe_remastered/app/router/custom_route_observer.dart';
@@ -13,7 +14,7 @@ import 'package:valorant_universe_remastered/locator.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Locator.locateServices(baseUrl: StringContants.baseUrl);
+  await Locator.locateServices(baseUrl: Env.baseUrl);
   await EasyLocalization.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 

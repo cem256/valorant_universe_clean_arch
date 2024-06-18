@@ -76,7 +76,7 @@ class WeaponDetailsView extends StatelessWidget {
                   SizedBox(
                     height: context.defaultValue,
                   ),
-                  _DamageRanges(weaponStats: weapon.weaponStats)
+                  _DamageRanges(weaponStats: weapon.weaponStats),
                 ],
               ),
             ],

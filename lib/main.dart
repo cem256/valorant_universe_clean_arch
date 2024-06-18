@@ -8,7 +8,7 @@ import 'package:valorant_universe_remastered/app/l10n/app_l10n.dart';
 import 'package:valorant_universe_remastered/app/router/app_router.dart';
 import 'package:valorant_universe_remastered/app/router/custom_route_observer.dart';
 import 'package:valorant_universe_remastered/app/theme/app_theme.dart';
-import 'package:valorant_universe_remastered/core/utility/observers/custom_bloc_observer.dart';
+import 'package:valorant_universe_remastered/core/utility/observer/custom_bloc_observer.dart';
 import 'package:valorant_universe_remastered/locator.dart';
 
 Future<void> main() async {

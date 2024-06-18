@@ -41,7 +41,7 @@ class MapDetailView extends StatelessWidget {
               Text(
                 map.coordinates,
                 style: const TextStyle(fontWeight: FontWeight.bold),
-              )
+              ),
             ],
           ),
         ),

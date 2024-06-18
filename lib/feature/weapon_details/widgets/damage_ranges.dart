@@ -23,7 +23,7 @@ class _DamageRanges extends StatelessWidget {
               leading: LocaleKeys.weapon_detail_damage_ranges_meters.tr(
                 namedArgs: {
                   'start': weaponStats.damageRanges[index].rangeStartMeters,
-                  'end': weaponStats.damageRanges[index].rangeEndMeters
+                  'end': weaponStats.damageRanges[index].rangeEndMeters,
                 },
               ),
               trailing: '',

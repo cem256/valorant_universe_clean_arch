@@ -43,7 +43,9 @@ Provides information about agents, maps and weapons for Valorant. Built with Cle
   - [Freezed](https://pub.dev/packages/freezed)
   - [JsonSerializable](https://pub.dev/packages/json_serializable)
 - Functional Programming
-  - [Dartz](https://pub.dev/packages/dartz)
+  - [FpDart](https://pub.dev/packages/fpdart)
+- Logging
+  - [Logger](https://pub.dev/packages/logger)
 - Network
   - [Dio](https://pub.dev/packages/dio)
   - [DioSmartRetry](https://pub.dev/packages/dio_smart_retry)

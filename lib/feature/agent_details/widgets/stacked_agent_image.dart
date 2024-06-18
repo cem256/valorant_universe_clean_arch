@@ -50,7 +50,7 @@ class _StackedAgentImage extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

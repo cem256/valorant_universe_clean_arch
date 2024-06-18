@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:valorant_universe_remastered/app/errors/exceptions/exceptions.dart';
 import 'package:valorant_universe_remastered/app/errors/failure/failure.dart';
 import 'package:valorant_universe_remastered/app/l10n/app_l10n.g.dart';
